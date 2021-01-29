@@ -1,0 +1,7 @@
+# Clara JANA application script example
+
+set servicesFile services.yaml
+
+set threads 2
+
+run local

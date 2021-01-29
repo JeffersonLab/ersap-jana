@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="ERSAP_TRIDAS"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\Prob\;CMake Files\..\..\..\Prob\clara\;CMake Files\..\..\..\Prob\clara\myClara\;CMake Files\..\..\..\Prob\clara\myClara\lib\;CMake Files\..\..\..\Prob\clara\myClara\lib\cmake\;CMake Files\..\..\..\Prob\clara\myClara\lib\cmake\clara\;CMake Files\..\..\..\Prob\clara\myClara\lib\cmake\xmsg\;CMake Files\service\;CMake Files\service\src\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/Users/gurjyan/Devel/Ersap/ersap-jana/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/local/bin/gmake -j8 -f &quot;/Users/gurjyan/Devel/Ersap/ersap-jana/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/local/bin/gmake -j8 -f &quot;/Users/gurjyan/Devel/Ersap/ersap-jana/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/local/bin/gmake -j8 -f &quot;/Users/gurjyan/Devel/Ersap/ersap-jana/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/local/bin/gmake -j8 -f &quot;/Users/gurjyan/Devel/Ersap/ersap-jana/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="install/local">
+				<Option working_dir="/Users/gurjyan/Devel/Ersap/ersap-jana/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/local/bin/gmake -j8 -f &quot;/Users/gurjyan/Devel/Ersap/ersap-jana/cmake-build-debug/Makefile&quot;  VERBOSE=1 install/local"/>
+					<CompileFile command="/usr/local/bin/gmake -j8 -f &quot;/Users/gurjyan/Devel/Ersap/ersap-jana/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/local/bin/gmake -j8 -f &quot;/Users/gurjyan/Devel/Ersap/ersap-jana/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/local/bin/gmake -j8 -f &quot;/Users/gurjyan/Devel/Ersap/ersap-jana/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="install/strip">
+				<Option working_dir="/Users/gurjyan/Devel/Ersap/ersap-jana/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/local/bin/gmake -j8 -f &quot;/Users/gurjyan/Devel/Ersap/ersap-jana/cmake-build-debug/Makefile&quot;  VERBOSE=1 install/strip"/>
+					<CompileFile command="/usr/local/bin/gmake -j8 -f &quot;/Users/gurjyan/Devel/Ersap/ersap-jana/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/local/bin/gmake -j8 -f &quot;/Users/gurjyan/Devel/Ersap/ersap-jana/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/local/bin/gmake -j8 -f &quot;/Users/gurjyan/Devel/Ersap/ersap-jana/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="install">
+				<Option working_dir="/Users/gurjyan/Devel/Ersap/ersap-jana/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/local/bin/gmake -j8 -f &quot;/Users/gurjyan/Devel/Ersap/ersap-jana/cmake-build-debug/Makefile&quot;  VERBOSE=1 install"/>
+					<CompileFile command="/usr/local/bin/gmake -j8 -f &quot;/Users/gurjyan/Devel/Ersap/ersap-jana/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/local/bin/gmake -j8 -f &quot;/Users/gurjyan/Devel/Ersap/ersap-jana/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/local/bin/gmake -j8 -f &quot;/Users/gurjyan/Devel/Ersap/ersap-jana/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="list_install_components">
+				<Option working_dir="/Users/gurjyan/Devel/Ersap/ersap-jana/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/local/bin/gmake -j8 -f &quot;/Users/gurjyan/Devel/Ersap/ersap-jana/cmake-build-debug/Makefile&quot;  VERBOSE=1 list_install_components"/>
+					<CompileFile command="/usr/local/bin/gmake -j8 -f &quot;/Users/gurjyan/Devel/Ersap/ersap-jana/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/local/bin/gmake -j8 -f &quot;/Users/gurjyan/Devel/Ersap/ersap-jana/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/local/bin/gmake -j8 -f &quot;/Users/gurjyan/Devel/Ersap/ersap-jana/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/Users/gurjyan/Devel/Ersap/ersap-jana/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/local/bin/gmake -j8 -f &quot;/Users/gurjyan/Devel/Ersap/ersap-jana/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/local/bin/gmake -j8 -f &quot;/Users/gurjyan/Devel/Ersap/ersap-jana/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/local/bin/gmake -j8 -f &quot;/Users/gurjyan/Devel/Ersap/ersap-jana/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/local/bin/gmake -j8 -f &quot;/Users/gurjyan/Devel/Ersap/ersap-jana/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/Users/gurjyan/Devel/Ersap/ersap-jana/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/local/bin/gmake -j8 -f &quot;/Users/gurjyan/Devel/Ersap/ersap-jana/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/local/bin/gmake -j8 -f &quot;/Users/gurjyan/Devel/Ersap/ersap-jana/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/local/bin/gmake -j8 -f &quot;/Users/gurjyan/Devel/Ersap/ersap-jana/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/local/bin/gmake -j8 -f &quot;/Users/gurjyan/Devel/Ersap/ersap-jana/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="tridas-service">
+				<Option output="/Users/gurjyan/Devel/Ersap/ersap-jana/cmake-build-debug/service/src/libtridas-service.dylib" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/gurjyan/Devel/Ersap/ersap-jana/cmake-build-debug/service/src"/>
+				<Option object_output="./"/>
+				<Option type="3"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Users/gurjyan/Prob/clara/myClara/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/local/Cellar/zeromq/4.3.3/include"/>
+					<Add directory="/usr/local/Cellar/gcc/10.2.0/lib/gcc/10/gcc/x86_64-apple-darwin19/10.2.0/../../../../../../include/c++/10.2.0"/>
+					<Add directory="/usr/local/Cellar/gcc/10.2.0/lib/gcc/10/gcc/x86_64-apple-darwin19/10.2.0/../../../../../../include/c++/10.2.0/x86_64-apple-darwin19"/>
+					<Add directory="/usr/local/Cellar/gcc/10.2.0/lib/gcc/10/gcc/x86_64-apple-darwin19/10.2.0/../../../../../../include/c++/10.2.0/backward"/>
+					<Add directory="/usr/local/Cellar/gcc/10.2.0/lib/gcc/10/gcc/x86_64-apple-darwin19/10.2.0/include"/>
+					<Add directory="/usr/local/Cellar/gcc/10.2.0/lib/gcc/10/gcc/x86_64-apple-darwin19/10.2.0/include-fixed"/>
+					<Add directory="/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk/usr/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk/System/Library/Frameworks"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/12.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/local/bin/gmake -j8 -f &quot;/Users/gurjyan/Devel/Ersap/ersap-jana/cmake-build-debug/service/src/Makefile&quot;  VERBOSE=1 tridas-service"/>
+					<CompileFile command="/usr/local/bin/gmake -j8 -f &quot;/Users/gurjyan/Devel/Ersap/ersap-jana/cmake-build-debug/service/src/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/local/bin/gmake -j8 -f &quot;/Users/gurjyan/Devel/Ersap/ersap-jana/cmake-build-debug/service/src/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/local/bin/gmake -j8 -f &quot;/Users/gurjyan/Devel/Ersap/ersap-jana/cmake-build-debug/service/src/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="tridas-service/fast">
+				<Option output="/Users/gurjyan/Devel/Ersap/ersap-jana/cmake-build-debug/service/src/libtridas-service.dylib" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/gurjyan/Devel/Ersap/ersap-jana/cmake-build-debug/service/src"/>
+				<Option object_output="./"/>
+				<Option type="3"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Users/gurjyan/Prob/clara/myClara/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/local/Cellar/zeromq/4.3.3/include"/>
+					<Add directory="/usr/local/Cellar/gcc/10.2.0/lib/gcc/10/gcc/x86_64-apple-darwin19/10.2.0/../../../../../../include/c++/10.2.0"/>
+					<Add directory="/usr/local/Cellar/gcc/10.2.0/lib/gcc/10/gcc/x86_64-apple-darwin19/10.2.0/../../../../../../include/c++/10.2.0/x86_64-apple-darwin19"/>
+					<Add directory="/usr/local/Cellar/gcc/10.2.0/lib/gcc/10/gcc/x86_64-apple-darwin19/10.2.0/../../../../../../include/c++/10.2.0/backward"/>
+					<Add directory="/usr/local/Cellar/gcc/10.2.0/lib/gcc/10/gcc/x86_64-apple-darwin19/10.2.0/include"/>
+					<Add directory="/usr/local/Cellar/gcc/10.2.0/lib/gcc/10/gcc/x86_64-apple-darwin19/10.2.0/include-fixed"/>
+					<Add directory="/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk/usr/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk/System/Library/Frameworks"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/12.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/local/bin/gmake -j8 -f &quot;/Users/gurjyan/Devel/Ersap/ersap-jana/cmake-build-debug/service/src/Makefile&quot;  VERBOSE=1 tridas-service/fast"/>
+					<CompileFile command="/usr/local/bin/gmake -j8 -f &quot;/Users/gurjyan/Devel/Ersap/ersap-jana/cmake-build-debug/service/src/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/local/bin/gmake -j8 -f &quot;/Users/gurjyan/Devel/Ersap/ersap-jana/cmake-build-debug/service/src/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/local/bin/gmake -j8 -f &quot;/Users/gurjyan/Devel/Ersap/ersap-jana/cmake-build-debug/service/src/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/Users/gurjyan/Devel/Ersap/ersap-jana/service/src/tridas-service.cpp">
+			<Option target="tridas-service"/>
+		</Unit>
+		<Unit filename="/Users/gurjyan/Devel/Ersap/ersap-jana/service/src/tridas-service.hpp">
+			<Option target="tridas-service"/>
+		</Unit>
+		<Unit filename="/Users/gurjyan/Devel/Ersap/ersap-jana/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/Users/gurjyan/Devel/Ersap/ersap-jana/../../../Prob/clara/myClara/lib/cmake/clara/clara-config.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\Prob\clara\myClara\lib\cmake\clara\"/>
+		</Unit>
+		<Unit filename="/Users/gurjyan/Devel/Ersap/ersap-jana/../../../Prob/clara/myClara/lib/cmake/clara/clara-targets-relwithdebinfo.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\Prob\clara\myClara\lib\cmake\clara\"/>
+		</Unit>
+		<Unit filename="/Users/gurjyan/Devel/Ersap/ersap-jana/../../../Prob/clara/myClara/lib/cmake/clara/clara-targets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\Prob\clara\myClara\lib\cmake\clara\"/>
+		</Unit>
+		<Unit filename="/Users/gurjyan/Devel/Ersap/ersap-jana/../../../Prob/clara/myClara/lib/cmake/xmsg/EnsureProtobufTarget.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\Prob\clara\myClara\lib\cmake\xmsg\"/>
+		</Unit>
+		<Unit filename="/Users/gurjyan/Devel/Ersap/ersap-jana/../../../Prob/clara/myClara/lib/cmake/xmsg/FindZeroMQ.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\Prob\clara\myClara\lib\cmake\xmsg\"/>
+		</Unit>
+		<Unit filename="/Users/gurjyan/Devel/Ersap/ersap-jana/../../../Prob/clara/myClara/lib/cmake/xmsg/xmsg-config.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\Prob\clara\myClara\lib\cmake\xmsg\"/>
+		</Unit>
+		<Unit filename="/Users/gurjyan/Devel/Ersap/ersap-jana/../../../Prob/clara/myClara/lib/cmake/xmsg/xmsg-targets-relwithdebinfo.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\Prob\clara\myClara\lib\cmake\xmsg\"/>
+		</Unit>
+		<Unit filename="/Users/gurjyan/Devel/Ersap/ersap-jana/../../../Prob/clara/myClara/lib/cmake/xmsg/xmsg-targets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\Prob\clara\myClara\lib\cmake\xmsg\"/>
+		</Unit>
+		<Unit filename="/Users/gurjyan/Devel/Ersap/ersap-jana/service/src/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\service\src\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

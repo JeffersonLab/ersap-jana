@@ -1,0 +1,13 @@
+/Users/gurjyan/Devel/Ersap/ersap-jana/build/CMakeFiles/install/local.dir
+/Users/gurjyan/Devel/Ersap/ersap-jana/build/CMakeFiles/install/strip.dir
+/Users/gurjyan/Devel/Ersap/ersap-jana/build/CMakeFiles/install.dir
+/Users/gurjyan/Devel/Ersap/ersap-jana/build/CMakeFiles/list_install_components.dir
+/Users/gurjyan/Devel/Ersap/ersap-jana/build/CMakeFiles/rebuild_cache.dir
+/Users/gurjyan/Devel/Ersap/ersap-jana/build/CMakeFiles/edit_cache.dir
+/Users/gurjyan/Devel/Ersap/ersap-jana/build/service/src/CMakeFiles/install/local.dir
+/Users/gurjyan/Devel/Ersap/ersap-jana/build/service/src/CMakeFiles/rebuild_cache.dir
+/Users/gurjyan/Devel/Ersap/ersap-jana/build/service/src/CMakeFiles/edit_cache.dir
+/Users/gurjyan/Devel/Ersap/ersap-jana/build/service/src/CMakeFiles/install/strip.dir
+/Users/gurjyan/Devel/Ersap/ersap-jana/build/service/src/CMakeFiles/install.dir
+/Users/gurjyan/Devel/Ersap/ersap-jana/build/service/src/CMakeFiles/list_install_components.dir
+/Users/gurjyan/Devel/Ersap/ersap-jana/build/service/src/CMakeFiles/jana_service.dir

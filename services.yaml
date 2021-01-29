@@ -1,0 +1,17 @@
+---
+io-services:
+  reader:
+    class: tridas-service
+    name: TridasService
+    lang: cpp
+  writer:
+    class: org.jlab.clara.demo.services.HistogramService
+    name: HistogramService
+
+services:
+  - class: jana-service
+    name: JanaService
+    lang: cpp
+
+mime-types:
+  - binary/data-hipo
