@@ -1,17 +1,18 @@
 ---
 io-services:
   reader:
-    class: tridas-service
-    name: TridasService
-    lang: cpp
+    class: org.jlab.ersap.demo.services.ImageReaderService
+    name: ImageReaderService
   writer:
-    class: org.jlab.clara.demo.services.HistogramService
-    name: HistogramService
+    class: org.jlab.ersap.demo.services.ImageWriterService
+    name: ImageWriterService
 
 services:
-  - class: jana-service
-    name: JanaService
+  - class: org.jlab.ersap.demo.services.FaceDetectorService
+    name: FaceDetectorService
+  - class: pupil_detector_service
+    name: PupilDetectorService
     lang: cpp
 
 mime-types:
-  - binary/data-hipo
+  - binary/img-file
