@@ -31,8 +31,9 @@ namespace clara {
         }
 
         clara::EngineData JanaService::execute(clara::EngineData &input) {
-            auto output = clara::EngineData{};
-            return output;
+            // auto output = clara::EngineData{};
+            std::cout << "DDD in the c++ engine....... "<< std::endl;
+            return input;
         }
 
         clara::EngineData JanaService::execute_group(const std::vector<clara::EngineData> &) {
