@@ -1,9 +1,9 @@
 # Create one shared library per service
-set(JANA_SERVICS
+set(JANA_SERVICES
         jana_service
         )
 
-foreach(service ${JANA_SERVICS})
+foreach(service ${JANA_SERVICES})
     add_library(${service} SHARED ${service}.cpp)
     target_link_libraries(${service}  Clara::clara)
 #    target_link_libraries(${service} jana_data jana_engine Clara::clara)

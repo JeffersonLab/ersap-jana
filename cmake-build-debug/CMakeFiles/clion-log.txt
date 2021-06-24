@@ -1,5 +1,5 @@
-/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_CXX_COMPILER=/usr/local/Cellar/gcc/10.2.0/bin/gcc-10 -G "CodeBlocks - Unix Makefiles" /Users/gurjyan/Devel/Ersap/ersap-jana
-CMake Error at CMakeLists.txt:43 (find_package):
+/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_CXX_COMPILER=/usr/local/Cellar/gcc/10.2.0/bin/gcc-10 -G "CodeBlocks - Unix Makefiles" /Users/gurjyan/Devel/Ersap/ersap/ersap-jana
+CMake Error at CMakeLists.txt:44 (find_package):
   By not providing "FindJANA.cmake" in CMAKE_MODULE_PATH this project has
   asked CMake to find a package configuration file provided by "JANA", but
   CMake did not find one.
@@ -17,5 +17,5 @@ CMake Error at CMakeLists.txt:43 (find_package):
 
 
 -- Configuring incomplete, errors occurred!
-See also "/Users/gurjyan/Devel/Ersap/ersap-jana/cmake-build-debug/CMakeFiles/CMakeOutput.log".
-See also "/Users/gurjyan/Devel/Ersap/ersap-jana/cmake-build-debug/CMakeFiles/CMakeError.log".
+See also "/Users/gurjyan/Devel/Ersap/ersap/ersap-jana/cmake-build-debug/CMakeFiles/CMakeOutput.log".
+See also "/Users/gurjyan/Devel/Ersap/ersap/ersap-jana/cmake-build-debug/CMakeFiles/CMakeError.log".

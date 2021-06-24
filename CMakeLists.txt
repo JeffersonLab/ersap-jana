@@ -9,14 +9,14 @@ if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
 endif()
 
 if(DEFINED ENV{CLARA_HOME} AND CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
-    # Provide useful default paths when $CLARA_HOME is defined
-    set(CMAKE_INSTALL_PREFIX "$ENV{CLARA_HOME}" CACHE PATH "" FORCE)
-    list(APPEND CMAKE_PREFIX_PATH "$ENV{CLARA_HOME}")
+    # Provide useful default paths when $ERSAP_HOME is defined
+    set(CMAKE_INSTALL_PREFIX "$ENV{ERSAP_HOME}" CACHE PATH "" FORCE)
+    list(APPEND CMAKE_PREFIX_PATH "$ENV{ERSAP_HOME}")
     list(APPEND CMAKE_PREFIX_PATH "$ENV{JANA_HOME}/lib/cmake/JANA")
 endif()
 
 if(NOT DEFINED CMAKE_INSTALL_PLUGINDIR)
-    set(CMAKE_INSTALL_PLUGINDIR plugins CACHE PATH "Clara plugins directory (plugins)")
+    set(CMAKE_INSTALL_PLUGINDIR plugins CACHE PATH "Ersap plugins directory (plugins)")
 endif()
 mark_as_advanced(CMAKE_INSTALL_PLUGINDIR)
 
@@ -39,18 +39,10 @@ if(APPLE)
 endif()
 
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake/Modules)
-#list(APPEND CMAKE_MODULE_PATH $ENV{JANA_HOME}/cmake)
 
 find_package(Clara REQUIRED)
 find_package(JANA REQUIRED)
 
-#add_subdirectory(engine/src)
-#add_subdirectory(data/src)
 add_subdirectory(service/src)
 
 
-#if(ERSAP_JANA_BUILD_TESTS)
-#    enable_testing()
-#    include(cmake/External/GTest.cmake)
-#    add_subdirectory(data/src/test)
-#endif(ERSAP_JANA_BUILD_TESTS)

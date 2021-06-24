@@ -17,6 +17,8 @@ set(CMAKE_CXX_SIMULATE_ID "")
 set(CMAKE_CXX_COMPILER_FRONTEND_VARIANT "")
 set(CMAKE_CXX_SIMULATE_VERSION "")
 
+set(CMAKE_CXX_COMPILER_SYSROOT "/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk/usr")
+set(CMAKE_COMPILER_SYSROOT "/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk/usr")
 
 
 set(CMAKE_AR "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ar")
@@ -82,7 +84,7 @@ endif()
 set(CMAKE_CXX_SYSROOT_FLAG "-isysroot")
 set(CMAKE_CXX_OSX_DEPLOYMENT_TARGET_FLAG "-mmacosx-version-min=")
 
-set(CMAKE_CXX_IMPLICIT_INCLUDE_DIRECTORIES "/usr/local/Cellar/gcc/10.2.0/include/c++/10.2.0;/usr/local/Cellar/gcc/10.2.0/include/c++/10.2.0/x86_64-apple-darwin19;/usr/local/Cellar/gcc/10.2.0/include/c++/10.2.0/backward;/usr/local/Cellar/gcc/10.2.0/lib/gcc/10/gcc/x86_64-apple-darwin19/10.2.0/include;/usr/local/Cellar/gcc/10.2.0/lib/gcc/10/gcc/x86_64-apple-darwin19/10.2.0/include-fixed;/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/usr/include;/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/System/Library/Frameworks")
+set(CMAKE_CXX_IMPLICIT_INCLUDE_DIRECTORIES "/usr/local/Cellar/gcc/10.2.0/include/c++/10.2.0;/usr/local/Cellar/gcc/10.2.0/include/c++/10.2.0/x86_64-apple-darwin19;/usr/local/Cellar/gcc/10.2.0/include/c++/10.2.0/backward;/usr/local/Cellar/gcc/10.2.0/lib/gcc/10/gcc/x86_64-apple-darwin19/10.2.0/include;/usr/local/Cellar/gcc/10.2.0/lib/gcc/10/gcc/x86_64-apple-darwin19/10.2.0/include-fixed;/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include;/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/System/Library/Frameworks")
 set(CMAKE_CXX_IMPLICIT_LINK_LIBRARIES "gcc_ext.10.5;gcc")
-set(CMAKE_CXX_IMPLICIT_LINK_DIRECTORIES "/usr/local/Cellar/gcc/10.2.0/lib/gcc/10/gcc/x86_64-apple-darwin19/10.2.0;/usr/local/Cellar/gcc/10.2.0/lib/gcc/10;/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/usr/lib")
-set(CMAKE_CXX_IMPLICIT_LINK_FRAMEWORK_DIRECTORIES "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/System/Library/Frameworks")
+set(CMAKE_CXX_IMPLICIT_LINK_DIRECTORIES "/usr/local/Cellar/gcc/10.2.0/lib/gcc/10/gcc/x86_64-apple-darwin19/10.2.0;/usr/local/Cellar/gcc/10.2.0/lib/gcc/10;/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/lib")
+set(CMAKE_CXX_IMPLICIT_LINK_FRAMEWORK_DIRECTORIES "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/System/Library/Frameworks")
