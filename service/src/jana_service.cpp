@@ -18,7 +18,7 @@ namespace clara {
         clara::EngineData JanaService::configure(clara::EngineData &input) {
             // Clara provides a simple JSON parser to read configuration data
             // and configure the service.
-            auto config = clara::stdlib::parse_json(input);
+            //auto config = clara::stdlib::parse_json(input);
 
             // Example for when the service has state that is configured by
             // the orchestrator. The "state" object should be a std::shared_ptr
