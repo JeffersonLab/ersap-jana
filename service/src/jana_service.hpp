@@ -5,18 +5,18 @@
 #ifndef ERSAP_JANA_JANA_SERVICE_HPP
 #define ERSAP_JANA_JANA_SERVICE_HPP
 
-#include <clara/engine.hpp>
+#include <ersap/engine.hpp>
 
 #include <atomic>
 #include <memory>
 
-namespace clara {
+namespace ersap {
     namespace jana {
 
 
 //class JanaEngine;
 
-class JanaService : public clara::Engine
+class JanaService : public ersap::Engine
 {
 public:
     JanaService() = default;
@@ -30,16 +30,16 @@ public:
     ~JanaService() override = default;
 
 public:
-    clara::EngineData configure(clara::EngineData&) override;
+    ersap::EngineData configure(ersap::EngineData&) override;
 
-    clara::EngineData execute(clara::EngineData&) override;
+    ersap::EngineData execute(ersap::EngineData&) override;
 
-    clara::EngineData execute_group(const std::vector<clara::EngineData>&) override;
+    ersap::EngineData execute_group(const std::vector<ersap::EngineData>&) override;
 
 public:
-    std::vector<clara::EngineDataType> input_data_types() const override;
+    std::vector<ersap::EngineDataType> input_data_types() const override;
 
-    std::vector<clara::EngineDataType> output_data_types() const override;
+    std::vector<ersap::EngineDataType> output_data_types() const override;
 
     std::set<std::string> states() const override;
 
@@ -57,7 +57,7 @@ public:
 };
 
     } // end namespace jana
-} // end namespace clara
+} // end namespace ersap
 
 
 #endif //ERSAP_JANA_JANA_SERVICE_HPP

@@ -99,8 +99,8 @@ tridas__service_EXTERNAL_OBJECTS =
 
 service/src/libtridas-service.dylib: service/src/CMakeFiles/tridas-service.dir/tridas-service.cpp.o
 service/src/libtridas-service.dylib: service/src/CMakeFiles/tridas-service.dir/build.make
-service/src/libtridas-service.dylib: /Users/gurjyan/Prob/clara/myClara/lib/libclara.dylib
-service/src/libtridas-service.dylib: /Users/gurjyan/Prob/clara/myClara/lib/libxmsg.dylib
+service/src/libtridas-service.dylib: /Users/gurjyan/Prob/ersap/myErsap/lib/libersap.dylib
+service/src/libtridas-service.dylib: /Users/gurjyan/Prob/ersap/myErsap/lib/libxmsg.dylib
 service/src/libtridas-service.dylib: /usr/local/lib/libprotobuf.dylib
 service/src/libtridas-service.dylib: /usr/local/Cellar/zeromq/4.3.3/lib/libzmq.dylib
 service/src/libtridas-service.dylib: service/src/CMakeFiles/tridas-service.dir/link.txt

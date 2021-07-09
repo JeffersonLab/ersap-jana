@@ -3,22 +3,22 @@
 //
 
 #include "jana_service.hpp"
-#include <clara/stdlib/json_utils.hpp>
+#include <ersap/stdlib/json_utils.hpp>
 
 #include <cmath>
 #include <iostream>
 
 extern "C"
-std::unique_ptr<clara::Engine> create_engine() {
-    return std::make_unique<clara::jana::JanaService>();
+std::unique_ptr<ersap::Engine> create_engine() {
+    return std::make_unique<ersap::jana::JanaService>();
 }
-namespace clara {
+namespace ersap {
     namespace jana {
 
-        clara::EngineData JanaService::configure(clara::EngineData &input) {
-            // Clara provides a simple JSON parser to read configuration data
+        ersap::EngineData JanaService::configure(ersap::EngineData &input) {
+            // Ersap provides a simple JSON parser to read configuration data
             // and configure the service.
-            auto config = clara::stdlib::parse_json(input);
+            auto config = ersap::stdlib::parse_json(input);
 
             // Example for when the service has state that is configured by
             // the orchestrator. The "state" object should be a std::shared_ptr
@@ -30,24 +30,24 @@ namespace clara {
             return {};
         }
 
-        clara::EngineData JanaService::execute(clara::EngineData &input) {
-            // auto output = clara::EngineData{};
+        ersap::EngineData JanaService::execute(ersap::EngineData &input) {
+            // auto output = ersap::EngineData{};
             std::cout << "DDD in the c++ engine....... "<< std::endl;
             return input;
         }
 
-        clara::EngineData JanaService::execute_group(const std::vector<clara::EngineData> &) {
+        ersap::EngineData JanaService::execute_group(const std::vector<ersap::EngineData> &) {
             return {};
         }
 
 
-        std::vector<clara::EngineDataType> JanaService::input_data_types() const {
-            return {clara::type::STRING};
+        std::vector<ersap::EngineDataType> JanaService::input_data_types() const {
+            return {ersap::type::STRING};
         }
 
 
-        std::vector<clara::EngineDataType> JanaService::output_data_types() const {
-            return {clara::type::STRING};
+        std::vector<ersap::EngineDataType> JanaService::output_data_types() const {
+            return {ersap::type::STRING};
         }
 
 

@@ -8,7 +8,7 @@ if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
             Debug Release MinSizeRel RelWithDebInfo)
 endif()
 
-if(DEFINED ENV{CLARA_HOME} AND CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
+if(DEFINED ENV{ERSAP_HOME} AND CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
     # Provide useful default paths when $ERSAP_HOME is defined
     set(CMAKE_INSTALL_PREFIX "$ENV{ERSAP_HOME}" CACHE PATH "" FORCE)
     list(APPEND CMAKE_PREFIX_PATH "$ENV{ERSAP_HOME}")
@@ -40,7 +40,7 @@ endif()
 
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake/Modules)
 
-find_package(Clara REQUIRED)
+find_package(Ersap REQUIRED)
 find_package(JANA REQUIRED)
 
 add_subdirectory(service/src)

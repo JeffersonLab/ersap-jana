@@ -6,5 +6,5 @@ CXX_FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/Ma
 
 CXX_DEFINES = -Dtridas_service_EXPORTS
 
-CXX_INCLUDES = -isystem /Users/gurjyan/Prob/clara/myClara/include -isystem /usr/local/include -isystem /usr/local/Cellar/zeromq/4.3.3/include 
+CXX_INCLUDES = -isystem /Users/gurjyan/Prob/ersap/myErsap/include -isystem /usr/local/include -isystem /usr/local/Cellar/zeromq/4.3.3/include 
 

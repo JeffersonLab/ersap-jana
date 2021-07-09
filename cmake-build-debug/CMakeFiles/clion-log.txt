@@ -1,17 +1,17 @@
 /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_CXX_COMPILER=/usr/local/Cellar/gcc/10.2.0/bin/gcc-10 -G "CodeBlocks - Unix Makefiles" /Users/gurjyan/Devel/Ersap/ersap/ersap-jana
-CMake Error at CMakeLists.txt:44 (find_package):
-  By not providing "FindJANA.cmake" in CMAKE_MODULE_PATH this project has
-  asked CMake to find a package configuration file provided by "JANA", but
+CMake Error at CMakeLists.txt:43 (find_package):
+  By not providing "FindErsap.cmake" in CMAKE_MODULE_PATH this project has
+  asked CMake to find a package configuration file provided by "Ersap", but
   CMake did not find one.
 
-  Could not find a package configuration file provided by "JANA" with any of
+  Could not find a package configuration file provided by "Ersap" with any of
   the following names:
 
-    JANAConfig.cmake
-    jana-config.cmake
+    ErsapConfig.cmake
+    ersap-config.cmake
 
-  Add the installation prefix of "JANA" to CMAKE_PREFIX_PATH or set
-  "JANA_DIR" to a directory containing one of the above files.  If "JANA"
+  Add the installation prefix of "Ersap" to CMAKE_PREFIX_PATH or set
+  "Ersap_DIR" to a directory containing one of the above files.  If "Ersap"
   provides a separate development package or SDK, be sure it has been
   installed.
 

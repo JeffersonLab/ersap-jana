@@ -5,7 +5,7 @@
 		<Option title="ERSAP_TRIDAS"/>
 		<Option makefile_is_custom="1"/>
 		<Option compiler="gcc"/>
-		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\Prob\;CMake Files\..\..\..\Prob\clara\;CMake Files\..\..\..\Prob\clara\myClara\;CMake Files\..\..\..\Prob\clara\myClara\lib\;CMake Files\..\..\..\Prob\clara\myClara\lib\cmake\;CMake Files\..\..\..\Prob\clara\myClara\lib\cmake\clara\;CMake Files\..\..\..\Prob\clara\myClara\lib\cmake\xmsg\;CMake Files\service\;CMake Files\service\src\;"/>
+		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\Prob\;CMake Files\..\..\..\Prob\ersap\;CMake Files\..\..\..\Prob\ersap\myErsap\;CMake Files\..\..\..\Prob\ersap\myErsap\lib\;CMake Files\..\..\..\Prob\ersap\myErsap\lib\cmake\;CMake Files\..\..\..\Prob\ersap\myErsap\lib\cmake\ersap\;CMake Files\..\..\..\Prob\ersap\myErsap\lib\cmake\xmsg\;CMake Files\service\;CMake Files\service\src\;"/>
 		<Build>
 			<Target title="all">
 				<Option working_dir="/Users/gurjyan/Devel/Ersap/ersap-jana/cmake-build-debug"/>
@@ -84,7 +84,7 @@
 				<Option type="3"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/Users/gurjyan/Prob/clara/myClara/include"/>
+					<Add directory="/Users/gurjyan/Prob/ersap/myErsap/include"/>
 					<Add directory="/usr/local/include"/>
 					<Add directory="/usr/local/Cellar/zeromq/4.3.3/include"/>
 					<Add directory="/usr/local/Cellar/gcc/10.2.0/lib/gcc/10/gcc/x86_64-apple-darwin19/10.2.0/../../../../../../include/c++/10.2.0"/>
@@ -113,7 +113,7 @@
 				<Option type="3"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/Users/gurjyan/Prob/clara/myClara/include"/>
+					<Add directory="/Users/gurjyan/Prob/ersap/myErsap/include"/>
 					<Add directory="/usr/local/include"/>
 					<Add directory="/usr/local/Cellar/zeromq/4.3.3/include"/>
 					<Add directory="/usr/local/Cellar/gcc/10.2.0/lib/gcc/10/gcc/x86_64-apple-darwin19/10.2.0/../../../../../../include/c++/10.2.0"/>
@@ -145,29 +145,29 @@
 		<Unit filename="/Users/gurjyan/Devel/Ersap/ersap-jana/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
-		<Unit filename="/Users/gurjyan/Devel/Ersap/ersap-jana/../../../Prob/clara/myClara/lib/cmake/clara/clara-config.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\Prob\clara\myClara\lib\cmake\clara\"/>
+		<Unit filename="/Users/gurjyan/Devel/Ersap/ersap-jana/../../../Prob/ersap/myErsap/lib/cmake/ersap/ersap-config.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\Prob\ersap\myErsap\lib\cmake\ersap\"/>
 		</Unit>
-		<Unit filename="/Users/gurjyan/Devel/Ersap/ersap-jana/../../../Prob/clara/myClara/lib/cmake/clara/clara-targets-relwithdebinfo.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\Prob\clara\myClara\lib\cmake\clara\"/>
+		<Unit filename="/Users/gurjyan/Devel/Ersap/ersap-jana/../../../Prob/ersap/myErsap/lib/cmake/ersap/ersap-targets-relwithdebinfo.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\Prob\ersap\myErsap\lib\cmake\ersap\"/>
 		</Unit>
-		<Unit filename="/Users/gurjyan/Devel/Ersap/ersap-jana/../../../Prob/clara/myClara/lib/cmake/clara/clara-targets.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\Prob\clara\myClara\lib\cmake\clara\"/>
+		<Unit filename="/Users/gurjyan/Devel/Ersap/ersap-jana/../../../Prob/ersap/myErsap/lib/cmake/ersap/ersap-targets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\Prob\ersap\myErsap\lib\cmake\ersap\"/>
 		</Unit>
-		<Unit filename="/Users/gurjyan/Devel/Ersap/ersap-jana/../../../Prob/clara/myClara/lib/cmake/xmsg/EnsureProtobufTarget.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\Prob\clara\myClara\lib\cmake\xmsg\"/>
+		<Unit filename="/Users/gurjyan/Devel/Ersap/ersap-jana/../../../Prob/ersap/myErsap/lib/cmake/xmsg/EnsureProtobufTarget.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\Prob\ersap\myErsap\lib\cmake\xmsg\"/>
 		</Unit>
-		<Unit filename="/Users/gurjyan/Devel/Ersap/ersap-jana/../../../Prob/clara/myClara/lib/cmake/xmsg/FindZeroMQ.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\Prob\clara\myClara\lib\cmake\xmsg\"/>
+		<Unit filename="/Users/gurjyan/Devel/Ersap/ersap-jana/../../../Prob/ersap/myErsap/lib/cmake/xmsg/FindZeroMQ.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\Prob\ersap\myErsap\lib\cmake\xmsg\"/>
 		</Unit>
-		<Unit filename="/Users/gurjyan/Devel/Ersap/ersap-jana/../../../Prob/clara/myClara/lib/cmake/xmsg/xmsg-config.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\Prob\clara\myClara\lib\cmake\xmsg\"/>
+		<Unit filename="/Users/gurjyan/Devel/Ersap/ersap-jana/../../../Prob/ersap/myErsap/lib/cmake/xmsg/xmsg-config.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\Prob\ersap\myErsap\lib\cmake\xmsg\"/>
 		</Unit>
-		<Unit filename="/Users/gurjyan/Devel/Ersap/ersap-jana/../../../Prob/clara/myClara/lib/cmake/xmsg/xmsg-targets-relwithdebinfo.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\Prob\clara\myClara\lib\cmake\xmsg\"/>
+		<Unit filename="/Users/gurjyan/Devel/Ersap/ersap-jana/../../../Prob/ersap/myErsap/lib/cmake/xmsg/xmsg-targets-relwithdebinfo.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\Prob\ersap\myErsap\lib\cmake\xmsg\"/>
 		</Unit>
-		<Unit filename="/Users/gurjyan/Devel/Ersap/ersap-jana/../../../Prob/clara/myClara/lib/cmake/xmsg/xmsg-targets.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\Prob\clara\myClara\lib\cmake\xmsg\"/>
+		<Unit filename="/Users/gurjyan/Devel/Ersap/ersap-jana/../../../Prob/ersap/myErsap/lib/cmake/xmsg/xmsg-targets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\Prob\ersap\myErsap\lib\cmake\xmsg\"/>
 		</Unit>
 		<Unit filename="/Users/gurjyan/Devel/Ersap/ersap-jana/service/src/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\service\src\"/>

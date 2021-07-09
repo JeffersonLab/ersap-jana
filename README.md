@@ -41,7 +41,7 @@ that will be used by the ERSAP orchestrator.
 
 ## Dependencies
 
-and [CLARA C++](https://github.com/JeffersonLab/clara-cpp#build-notes)
+and [ERSAP C++](https://github.com/JeffersonLab/ersap-cpp#build-notes)
 into `$ERSAP_HOME`.
 
 ## Build and deploy
