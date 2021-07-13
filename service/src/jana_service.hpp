@@ -14,7 +14,7 @@ namespace ersap {
     namespace jana {
 
 
-//class JanaEngine;
+class JanaEngine;
 
 class JanaService : public ersap::Engine
 {
