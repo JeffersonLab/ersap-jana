@@ -18,7 +18,7 @@ namespace ersap {
         ersap::EngineData JanaService::configure(ersap::EngineData &input) {
             // Ersap provides a simple JSON parser to read configuration data
             // and configure the service.
-//            auto config = ersap::stdlib::parse_json(input);
+            auto config = ersap::stdlib::parse_json(input);
 
             // Example for when the service has state that is configured by
             // the orchestrator. The "state" object should be a std::shared_ptr
@@ -26,7 +26,7 @@ namespace ersap {
             //
             // (This service is actually stateless, so engine_ could just simply be
             // initialized in the service constructor).
-//            std::atomic_store(&engine_, std::make_shared<JanaEngine>());
+            std::atomic_store(&engine_, std::make_shared<JanaEngine>());
             return {};
         }
 
