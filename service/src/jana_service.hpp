@@ -52,8 +52,8 @@ public:
 
     std::string version() const override;
 
-//private:
-//    std::shared_ptr<JanaEngine> engine_{};
+private:
+    std::shared_ptr<JanaEngine> engine_{};
 };
 
     } // end namespace jana
