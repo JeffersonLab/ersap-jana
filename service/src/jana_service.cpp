@@ -26,7 +26,7 @@ namespace ersap {
             //
             // (This service is actually stateless, so engine_ could just simply be
             // initialized in the service constructor).
-//            std::atomic_store(&engine_, std::make_shared<JanaEngine>());
+            std::atomic_store(&engine_, std::make_shared<JanaEngine>());
             return {};
         }
 
