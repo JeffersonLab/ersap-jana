@@ -31,7 +31,7 @@ namespace ersap {
         }
 
         ersap::EngineData JanaService::execute(ersap::EngineData &input) {
-            // auto output = ersap::EngineData{};
+            std::atomic_load(&engine_)->process();
             std::cout << "DDD in the c++ engine....... "<< std::endl;
             return input;
         }
