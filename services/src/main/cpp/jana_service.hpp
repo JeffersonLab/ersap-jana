@@ -1,9 +1,5 @@
-//
-// Created by Vardan Gyurjyan on 1/28/21.
-//
-
-#ifndef ERSAP_JANA_JANA_SERVICE_HPP
-#define ERSAP_JANA_JANA_SERVICE_HPP
+#ifndef SCIA_RESAMPLING_SERVICE_HPP
+#define SCIA_RESAMPLING_SERVICE_HPP
 
 #include <ersap/engine.hpp>
 
@@ -11,8 +7,7 @@
 #include <memory>
 
 namespace ersap {
-    namespace jana {
-
+namespace jana {
 
 class JanaEngine;
 
@@ -56,8 +51,7 @@ private:
     std::shared_ptr<JanaEngine> engine_{};
 };
 
-    } // end namespace jana
+} // end namespace jana
 } // end namespace ersap
 
-
-#endif //ERSAP_JANA_JANA_SERVICE_HPP
+#endif

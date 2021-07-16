@@ -1,5 +1,5 @@
 /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_CXX_COMPILER=/usr/local/Cellar/gcc/10.2.0/bin/gcc-10 -G "CodeBlocks - Unix Makefiles" /Users/gurjyan/Devel/Ersap/ersap/ersap-jana
-CMake Error at CMakeLists.txt:43 (find_package):
+CMake Error at CMakeLists.txt:49 (find_package):
   By not providing "FindErsap.cmake" in CMAKE_MODULE_PATH this project has
   asked CMake to find a package configuration file provided by "Ersap", but
   CMake did not find one.
