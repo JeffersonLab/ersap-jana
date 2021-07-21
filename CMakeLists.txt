@@ -51,6 +51,6 @@ find_package(Ersap REQUIRED)
 
 
 add_subdirectory(legacy/src/main/cpp)
-add_subdirectory(data/src/main/cpp)
+#add_subdirectory(data/src/main/cpp)
 add_subdirectory(services/src/main/cpp)
 
