@@ -47,7 +47,7 @@ ersap::EngineData JanaService::execute(ersap::EngineData& input)
 //    }
 //
 //    auto& img = ersap::data_cast<Image>(input);
-
+    std::cout << "executing..." << std::endl;
     // This always loads the shared_pointer into a new shared_ptr
 //    std::atomic_load(&detector_)->run(img.mat);
     std::atomic_load(&engine_)->process();
