@@ -1,5 +1,5 @@
 set(DEMO_DATA_SRC
-  image_data_type.cpp
+        image_data_type.cpp.IGNORE
 )
 
 add_library(demo_data SHARED ${DEMO_DATA_SRC})

@@ -1,4 +1,4 @@
-#include "image_data_type.hpp"
+#include "image_data_type.hpp.IGNORE"
 
 #include <cstdint>
 #include <iostream>
