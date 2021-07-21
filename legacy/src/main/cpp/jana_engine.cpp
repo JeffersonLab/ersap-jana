@@ -8,7 +8,7 @@ namespace jana {
 
     void JanaEngine::process()
     {
-        std::cout << "processing..." << std::endl;
+        std::cout << "JANA processing..." << std::endl;
     }
 } // end namespace jana
 } // end namespace ersap

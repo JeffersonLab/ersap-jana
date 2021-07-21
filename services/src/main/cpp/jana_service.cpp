@@ -8,6 +8,10 @@
 #include <cmath>
 #include <iostream>
 
+#include <chrono>
+#include <sys/time.h>
+#include <ctime>
+
 extern "C"
 std::unique_ptr<ersap::Engine> create_engine()
 {
@@ -18,11 +22,15 @@ std::unique_ptr<ersap::Engine> create_engine()
 namespace ersap {
 namespace jana {
 
+    time_t start;
+
 ersap::EngineData JanaService::configure(ersap::EngineData& input)
 {
     // Ersap provides a simple JSON parser to read configuration data
     // and configure the service.
     auto config = ersap::stdlib::parse_json(input);
+
+        start = time(nullptr);
 
     // Example for when the service has state that is configured by
     // the orchestrator. The "state" object should be a std::shared_ptr
@@ -35,15 +43,16 @@ ersap::EngineData JanaService::configure(ersap::EngineData& input)
 }
 
 
-ersap::EngineData JanaService::execute(ersap::EngineData& input)
-{
+ersap::EngineData JanaService::execute(ersap::EngineData& input) {
     auto output = ersap::EngineData{};
 
-    std::cout << "DDD executing..." << std::endl;
-    // This always loads the shared_pointer into a new shared_ptr
-//    std::atomic_load(&detector_)->run(img.mat);
-    std::atomic_load(&engine_)->process();
+    time_t end = time(nullptr);
 
+    if (end - start >= 10) {
+    // This always loads the shared_pointer into a new shared_ptr
+    std::atomic_load(&engine_)->process();
+    start = end;
+}
     // Set and return output data
 //    output.set_data(IMAGE_TYPE, img);
     return input;
