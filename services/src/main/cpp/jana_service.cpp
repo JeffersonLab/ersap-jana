@@ -40,20 +40,20 @@ ersap::EngineData JanaService::execute(ersap::EngineData& input)
     auto output = ersap::EngineData{};
 
     // If the mime-type is not supported, return an error.
-    if (input.mime_type() != IMAGE_TYPE) {
-        output.set_status(ersap::EngineStatus::ERROR);
-        output.set_description("Wrong input type");
-        return output;
-    }
-
-    auto& img = ersap::data_cast<Image>(input);
+//    if (input.mime_type() != IMAGE_TYPE) {
+//        output.set_status(ersap::EngineStatus::ERROR);
+//        output.set_description("Wrong input type");
+//        return output;
+//    }
+//
+//    auto& img = ersap::data_cast<Image>(input);
 
     // This always loads the shared_pointer into a new shared_ptr
 //    std::atomic_load(&detector_)->run(img.mat);
     std::atomic_load(&engine_)->process();
 
     // Set and return output data
-    output.set_data(IMAGE_TYPE, img);
+//    output.set_data(IMAGE_TYPE, img);
     return output;
 }
 
@@ -66,13 +66,15 @@ ersap::EngineData JanaService::execute_group(const std::vector<ersap::EngineData
 
 std::vector<ersap::EngineDataType> JanaService::input_data_types() const
 {
-    return { ersap::type::JSON, IMAGE_TYPE };
+//    return { ersap::type::JSON, IMAGE_TYPE };
+    return { ersap::type::JSON};
 }
 
 
 std::vector<ersap::EngineDataType> JanaService::output_data_types() const
 {
-    return { ersap::type::JSON, IMAGE_TYPE };
+//    return { ersap::type::JSON, IMAGE_TYPE };
+    return { ersap::type::JSON };
 }
 
 
