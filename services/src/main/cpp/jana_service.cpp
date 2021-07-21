@@ -1,6 +1,6 @@
 #include "jana_service.hpp"
 
-#include <image_data_type.hpp>
+//#include <image_data_type.hpp>
 #include <jana_engine.hpp>
 
 #include <ersap/stdlib/json_utils.hpp>
