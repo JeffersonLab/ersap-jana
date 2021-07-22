@@ -1,10 +1,8 @@
 # JANA ERSAP Integration Example
 
-[![Build Status](https://travis-ci.org/JeffersonLab/ersap-jana.svg?branch=master)](https://travis-ci.org/JeffersonLab/ersap-jana)
 
 Example of a JANA application presenting as an ERSAP service.
-This is an implementation of the ersap::stdlib::StreamingService abstract service, 
-that accepts 4 VTP streams and presents at its output aggregated and processed stream of data.
+ 
 
 ## Application architecture
 
