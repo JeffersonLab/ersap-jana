@@ -1,5 +1,5 @@
 set(LEGACY_SRC
-        jana_engine
+        jana_engine sampa_engine
 )
 
 add_library(ersap_jana SHARED ${LEGACY_SRC})
