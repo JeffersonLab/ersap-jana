@@ -1,6 +1,6 @@
 # Create one shared library per service
 set(DEMO_SERVICES
-  jana_service, sampa_service
+  jana_service sampa_service
 )
 
 foreach(service ${DEMO_SERVICES})
