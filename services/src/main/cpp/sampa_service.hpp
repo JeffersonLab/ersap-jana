@@ -47,7 +47,7 @@ namespace ersap {
             std::string version() const override;
 
         private:
-            std::shared_ptr<SampaService> engine_{};
+            std::shared_ptr<SampaEngine> engine_{};
         };
 
     } // end namespace jana
