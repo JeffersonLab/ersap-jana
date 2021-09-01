@@ -1,4 +1,3 @@
-
 #include "sampa_data_type.hpp"
 
 #include <cstdint>
