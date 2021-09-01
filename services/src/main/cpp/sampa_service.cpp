@@ -1,6 +1,3 @@
-//
-// Created by Vardan Gurjyan on 8/25/21.
-//
 #include "sampa_service.hpp"
 
 #include <sampa_data_type.hpp>

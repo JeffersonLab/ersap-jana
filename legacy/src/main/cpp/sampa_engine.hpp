@@ -1,7 +1,3 @@
-//
-// Created by Vardan Gurjyan on 8/25/21.
-//
-
 #ifndef ERSAP_JANA_SAMPA_ENGINE_HPP
 #define ERSAP_JANA_SAMPA_ENGINE_HPP
 #include <string>
