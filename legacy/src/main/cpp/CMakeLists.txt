@@ -3,7 +3,7 @@ set(LEGACY_SRC
 )
 
 add_library(ersap_jana SHARED ${LEGACY_SRC})
-target_link_libraries(ersap_jana PUBLIC ${OpenCV_LIBS})
+target_link_libraries(ersap_jana PUBLIC )
 target_include_directories(ersap_jana PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
 )

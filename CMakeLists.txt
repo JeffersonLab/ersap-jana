@@ -22,14 +22,6 @@ mark_as_advanced(CMAKE_INSTALL_PLUGINDIR)
 if(POLICY CMP0074)
   cmake_policy(SET CMP0074 NEW)
 endif()
-#if(NOT OpenCV_ROOT)
-#  set(OpenCV_ROOT $ENV{ERSAP_HOME} /usr/local/opt/opencv3 /opt/opencv3 /usr/local /usr/
-#      CACHE PATH "OpenCV installation prefix")
-#endif()
-#mark_as_advanced(OpenCV_ROOT)
-#
-#option(DEMO_BUILD_TESTS "Build tests" ON)
-
 
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -47,8 +39,6 @@ endif()
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake/Modules)
 
 find_package(Ersap REQUIRED)
-#find_package(OpenCV 3 REQUIRED HINTS ${OpenCV_ROOT})
-
 
 add_subdirectory(legacy/src/main/cpp)
 add_subdirectory(data/src/main/cpp)
