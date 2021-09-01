@@ -24,7 +24,7 @@ namespace ersap {
         };
 
         const ersap::EngineDataType SAMPA_DAS{"binary/data-sampa",
-                                               std::make_unique<ImageSerializer>()};
+                                               std::make_unique<SampaSerializer>()};
 
     } // end namespace demo
 } // end namespace ersap
