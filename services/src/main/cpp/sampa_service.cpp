@@ -28,6 +28,7 @@ namespace ersap {
             // Ersap provides a simple JSON parser to read configuration data
             // and configure the service.
             auto config = ersap::stdlib::parse_json(input);
+            start = time(nullptr);
 
             // Example for when the service has state that is configured by
             // the orchestrator. The "state" object should be a std::shared_ptr
@@ -42,20 +43,23 @@ namespace ersap {
 
         ersap::EngineData SampaService::execute(ersap::EngineData& input) {
             auto output = ersap::EngineData{};
-            std::cout << "DDD C++ SAMPA Service execute: "<< input.mime_type() << std::endl;
-            // If the mime-type is not supported, return an error.
-            if (input.mime_type() != SAMPA_DAS) {
-                output.set_status(ersap::EngineStatus::ERROR);
-                output.set_description("Wrong input type");
-                return output;
-            }
+//            std::cout << "DDD C++ SAMPA Service execute: "<< input.mime_type() << std::endl;
+//            if (input.mime_type() != SAMPA_DAS) {
+//                output.set_status(ersap::EngineStatus::ERROR);
+//                output.set_description("Wrong input type");
+//                return output;
+//            }
+            time_t end = time(nullptr);
 
+            if (end - start >= 10) {
                 // This always loads the shared_pointer into a new shared_ptr
                 std::atomic_load(&engine_)->process();
+                start = end;
+            }
             // Set and return output data
 //            output.set_data(SAMPA_DAS, processed_data);
 
-            return output;
+            return input;
         }
 
         ersap::EngineData SampaService::execute_group(const std::vector<ersap::EngineData>&)
