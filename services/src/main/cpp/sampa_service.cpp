@@ -51,7 +51,7 @@ namespace ersap {
 //            }
             time_t end = time(nullptr);
 
-            if (end - start >= 10) {
+            if (end - start >= 1) {
                 // This always loads the shared_pointer into a new shared_ptr
                 std::atomic_load(&engine_)->process();
                 start = end;
