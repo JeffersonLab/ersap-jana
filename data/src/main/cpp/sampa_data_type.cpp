@@ -12,12 +12,10 @@ namespace ersap {
         public:
             std::vector<std::uint8_t> write(const ersap::any& data) const override
             {
-
             }
 
             ersap::any read(const std::vector<std::uint8_t>& buffer) const override
             {
-
             }
 
         };
