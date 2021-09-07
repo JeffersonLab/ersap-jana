@@ -42,7 +42,7 @@ namespace ersap {
 
         ersap::EngineData SampaService::execute(ersap::EngineData& input) {
             auto output = ersap::EngineData{};
-            std::cout << "SAMPA Service execute: "<< input.mime_type() << std::endl;
+            std::cout << "DDD C++ SAMPA Service execute: "<< input.mime_type() << std::endl;
             // If the mime-type is not supported, return an error.
             if (input.mime_type() != SAMPA_DAS) {
                 output.set_status(ersap::EngineStatus::ERROR);

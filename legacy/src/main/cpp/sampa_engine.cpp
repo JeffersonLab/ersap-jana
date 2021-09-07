@@ -8,7 +8,7 @@ namespace ersap {
 
         void SampaEngine::process()
         {
-            std::cout << "JANA processing..." << std::endl;
+            std::cout << "DDD SAMPA C++ Service: JANA processing..." << std::endl;
         }
     } // end namespace jana
 } // end namespace ersap
