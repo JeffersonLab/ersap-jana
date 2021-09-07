@@ -43,19 +43,13 @@ namespace ersap {
 
         ersap::EngineData SampaService::execute(ersap::EngineData& input) {
             auto output = ersap::EngineData{};
-//            std::cout << "DDD C++ SAMPA Service execute: "<< input.mime_type() << std::endl;
-//            if (input.mime_type() != SAMPA_DAS) {
-//                output.set_status(ersap::EngineStatus::ERROR);
-//                output.set_description("Wrong input type");
-//                return output;
-//            }
-            time_t end = time(nullptr);
 
-            if (end - start >= 1) {
+//            time_t end = time(nullptr);
+//             if (end - start >= 1) {
                 // This always loads the shared_pointer into a new shared_ptr
                 std::atomic_load(&engine_)->process();
-                start = end;
-            }
+//                start = end;
+//            }
             // Set and return output data
 //            output.set_data(SAMPA_DAS, processed_data);
 
