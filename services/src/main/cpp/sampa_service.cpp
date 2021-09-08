@@ -51,7 +51,7 @@ namespace ersap {
 //                start = end;
 //            }
             // Set and return output data
-            output.set_data(SAMPA_DAS, processed_data);
+//            output.set_data(SAMPA_DAS, processed_data);
 
             return input;
         }
