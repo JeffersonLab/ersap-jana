@@ -63,15 +63,15 @@ namespace ersap {
 
         std::vector<ersap::EngineDataType> SampaService::input_data_types() const
         {
-//            return { ersap::type::JSON, ersap::type::BYTES };
-            return { ersap::type::JSON, SAMPA_DAS };
+            return { ersap::type::JSON, ersap::type::BYTES };
+//            return { ersap::type::JSON, SAMPA_DAS };
         }
 
 
         std::vector<ersap::EngineDataType> SampaService::output_data_types() const
         {
-//            return { ersap::type::JSON, ersap::type::BYTES };
-            return { ersap::type::JSON, SAMPA_DAS };
+            return { ersap::type::JSON, ersap::type::BYTES };
+//            return { ersap::type::JSON, SAMPA_DAS };
         }
 
 
