@@ -19,10 +19,10 @@ investigation groups, it is a good idea to present the data types used by the
 services into its own package.
 
 Orchestrators can then add a dependency on the data type package to send
-requests to the services, without downloading all the services implementation
+requests to the services, without downloading all services implementation
 dependencies.
 
-So, if JANA team decides to use it's own data type then here will go code 
+So, if JANA team decides to use its own data type then here will go code 
 for that particular data type serialization, with defined mime-type.
 The local CmakeList.txt will creat an appropriate shared lib.
 
@@ -33,7 +33,7 @@ The most important thing to consider is thread-safety of the engine classes.
 ERSAP services will run in a multi-thread environment and developers must
 ensure thread-safety.
 
-The `service`  CmakeList.txt creates the `libJanaService.so` (or dylib) artifact
+The `service`  CmakeList.txt creates e.g. `libJanaService.so` (or dylib) artifact
 that will be used by the ERSAP orchestrator.
 
 
@@ -66,7 +66,8 @@ the different ERSAP components required to run an application.
         >$ERSAP_HOME/bin/ersap-shell
 
 2. Define the application within a `services.yaml` file.
-   There is one file ready in the root of the repository.
+   There is one file ready in the root of the repository. 
+   NB: The default location for the application definition file is in $ERSAP_USER_DATA/config dir 
 
        ersap> set servicesFile services.yaml
 

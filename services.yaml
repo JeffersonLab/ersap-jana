@@ -1,18 +1,25 @@
 ---
 io-services:
   reader:
-    class: org.jlab.ersap.demo.services.ImageReaderService
-    name: ImageReaderService
+    class: org.jlab.epsci.stream.engine.SampaSourceEngine
+    name: SMPSource
   writer:
-    class: org.jlab.ersap.demo.services.ImageWriterService
-    name: ImageWriterService
-
+    class: org.jlab.epsci.stream.engine.SMPWriterEngine
+    name: SMPWriter
 services:
-  - class: org.jlab.ersap.demo.services.FaceDetectorService
-    name: FaceDetectorService
-  - class: pupil_detector_service
-    name: PupilDetectorService
+  - class: org.jlab.epsci.stream.engine.SMPStreamTestEngine
+    name: SMPStreamTest
+  - class: sampa_service
+    name: SampaService
     lang: cpp
-
+configuration:
+  io-services:
+    reader:
+      port1: 6000
+      port2: 6001
+  services:
+    SMPStreamTest:
+      print-interval: 10
+      slot: 3
 mime-types:
-  - binary/img-file
+  - binary/data-sampa
