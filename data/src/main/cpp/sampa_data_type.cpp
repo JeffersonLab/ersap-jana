@@ -19,7 +19,7 @@ namespace ersap {
                 uint8_t temp[4];
                 auto rtemp = reinterpret_cast<int32_t*>(temp);
                 *rtemp = value;
-                std::copy(std::begin(temp), std::end(temp), v);
+                std::copy(std::begin(temp), std::end(temp), std::back_inserter(v));
             }
 
         public:
@@ -36,7 +36,7 @@ namespace ersap {
                 write_int(result, message.payload.size());
                 for (const auto& ch : message.payload) {
                     write_int(result, ch.size());
-                    std::copy(begin(ch), end(ch), result);
+                    std::copy(begin(ch), end(ch), std::back_inserter(result));
                 }
                 return result;
             }

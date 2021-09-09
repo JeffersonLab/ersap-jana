@@ -40,7 +40,10 @@ list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake/Modules)
 
 find_package(Ersap REQUIRED)
 
+enable_testing()
+
 add_subdirectory(legacy/src/main/cpp)
 add_subdirectory(data/src/main/cpp)
+add_subdirectory(data/src/test/cpp)
 add_subdirectory(services/src/main/cpp)
 
