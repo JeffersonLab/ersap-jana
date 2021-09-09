@@ -20,7 +20,18 @@ namespace ersap {
             // uint32_t channel_id_offset;
         };
 
-        const extern ersap::EngineDataType SAMPA_DAS;
+        class SampaSerializer : public ersap::Serializer {
+
+        private:
+            int32_t read_int(std::vector<uint8_t>::const_iterator& it) const;
+            void write_int(std::vector<uint8_t>& v, int32_t value) const;
+
+        public:
+            std::vector<std::uint8_t> write(const ersap::any& data) const override;
+            ersap::any read(const std::vector<std::uint8_t>& buffer) const override;
+    };
+
+    const extern ersap::EngineDataType SAMPA_DAS;
 
     } // end namespace jana
 
