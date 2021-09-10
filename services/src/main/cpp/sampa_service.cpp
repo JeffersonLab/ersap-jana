@@ -1,7 +1,6 @@
 #include "sampa_service.hpp"
 
 #include <sampa_data_type.hpp>
-#include <sampa_engine.hpp>
 
 #include <ersap/stdlib/json_utils.hpp>
 
@@ -36,7 +35,7 @@ namespace ersap {
             //
             // (This service is actually stateless, so detector_ could just simply be
             // initialized in the service constructor).
-            std::atomic_store(&engine_, std::make_shared<SampaEngine>());
+            // std::atomic_store(&engine_, std::make_shared<SampaEngine>());
             return {};
         }
 
@@ -47,7 +46,7 @@ namespace ersap {
 //            time_t end = time(nullptr);
 //             if (end - start >= 1) {
                 // This always loads the shared_pointer into a new shared_ptr
-                std::atomic_load(&engine_)->process();
+                // std::atomic_load(&engine_)->process();
 //                start = end;
 //            }
             // Set and return output data

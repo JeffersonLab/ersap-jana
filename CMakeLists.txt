@@ -42,9 +42,22 @@ list(APPEND CMAKE_PREFIX_PATH $ENV{JANA_HOME}/lib/cmake ${JANA_HOME}/lib/cmake)
 find_package(JANA REQUIRED)
 find_package(Ersap REQUIRED)
 
+
+# Pull in GoogleTest framework. I pulled this code directly from the GoogleTest tutorial
+# TODO: This can probably be replaced by whatever is inside GTest.cmake
+include(FetchContent)
+FetchContent_Declare(
+        googletest
+        URL https://github.com/google/googletest/archive/609281088cfefc76f9d0ce82e1ff6c30cc3591e5.zip
+)
+# For Windows: Prevent overriding the parent project's compiler/linker settings
+set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+FetchContent_MakeAvailable(googletest)
 enable_testing()
+include(GoogleTest)
 
 add_subdirectory(data/src/main/cpp)
 add_subdirectory(data/src/test/cpp)
 add_subdirectory(services/src/main/cpp)
+add_subdirectory(services/src/test/cpp)
 

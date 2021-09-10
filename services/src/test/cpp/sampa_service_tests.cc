@@ -7,10 +7,11 @@
 
 using namespace ersap::jana;
 
-TEST(SampaSerializerTests, BasicAssertions) {
+TEST(SampaServiceTests, BasicAssertions) {
 
     SampaDASMessage original;
     original.payload = {{1,2,3}, {7,8,9,10}};
+    original.timeslice_id = 22;
 
     auto sut = SampaSerializer();
     auto serialized = sut.write(original);

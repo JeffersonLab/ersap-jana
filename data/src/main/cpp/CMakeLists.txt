@@ -3,7 +3,7 @@ set(SAMPA_DATA_SRC
         )
 
 add_library(sampa_data SHARED ${SAMPA_DATA_SRC})
-target_link_libraries(sampa_data PUBLIC ersap_jana Ersap::ersap)
+target_link_libraries(sampa_data PUBLIC Ersap::ersap)
 target_include_directories(sampa_data PUBLIC
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
         )
