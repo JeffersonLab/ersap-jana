@@ -29,7 +29,7 @@ public:
 
     /// SubmitAndWait provides a blocking interface for pushing groups of SampaDASMessages into JANA.
     /// JANA does NOT assume ownership of the events vector, nor does it clear it.
-    std::vector<SampaOutputMessage*> SubmitAndWait(std::vector<SampaDASMessage*>& events);
+    std::vector<const SampaOutputMessage *> SubmitAndWait(std::vector<SampaDASMessage*>& events);
 
 
     /// GetEvent polls the queue of submitted TridasEvents and feeds them into JEvents along with a

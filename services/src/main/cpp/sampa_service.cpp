@@ -1,14 +1,11 @@
+
 #include "sampa_service.hpp"
 
 #include <sampa_data_type.hpp>
-
+#include "group_event_processor.hpp"
 #include <ersap/stdlib/json_utils.hpp>
 
-#include <cmath>
 #include <iostream>
-
-#include <chrono>
-#include <sys/time.h>
 #include <ctime>
 
 extern "C"
@@ -27,15 +24,28 @@ namespace ersap {
             // Ersap provides a simple JSON parser to read configuration data
             // and configure the service.
             auto config = ersap::stdlib::parse_json(input);
-            start = time(nullptr);
 
-            // Example for when the service has state that is configured by
-            // the orchestrator. The "state" object should be a std::shared_ptr
-            // accessed atomically.
-            //
-            // (This service is actually stateless, so detector_ could just simply be
-            // initialized in the service constructor).
-            // std::atomic_store(&engine_, std::make_shared<SampaEngine>());
+            // TODO: Extract jana_config_file_name from clara config
+            auto jana_config_file_name = "config.jana";
+
+            std::cout << "Initializing JApplication" << std::endl;fflush(stdout);
+            // std::cout << "Loading options from " << jana_config_file_name << std::endl;fflush(stdout);
+            // auto params = new JParameterManager;
+            // try {
+            //     params->ReadConfigFile(jana_config_file_name);
+            // } catch (JException& e) {
+            //     std::cout << "Problem reading config file '" << jana_config_file_name << "'. Exiting." << std::endl << std::endl;
+            //     exit(-1);
+            // }
+
+            m_app = new JApplication(); // (params)
+            m_evtsrc = new ErsapEventSource("ErsapEventSource", m_app);
+
+            m_app->Add(m_evtsrc);
+            m_app->Add(new GroupedEventProcessor()); // TODO: Move this into ErsapEventSource::Finish() hopefully
+            // Add any event processors you might need
+
+            m_app->Run(false);  // Exit immediately, DON'T block until finished
             return {};
         }
 

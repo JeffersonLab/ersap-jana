@@ -5,7 +5,7 @@ ErsapEventSource::ErsapEventSource(std::string res_name, JApplication* app) :
 		JEventSource(std::move(res_name), app) {
 }
 
-std::vector<SampaOutputMessage*> ErsapEventSource::SubmitAndWait(std::vector<SampaDASMessage*>& events) {
+std::vector<const SampaOutputMessage *> ErsapEventSource::SubmitAndWait(std::vector<SampaDASMessage*>& events) {
 	auto group = new ErsapEventGroup<SampaOutputMessage>;
 	{
 		std::lock_guard<std::mutex> lock(m_pending_mutex);

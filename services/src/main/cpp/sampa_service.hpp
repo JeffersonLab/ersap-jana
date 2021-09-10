@@ -4,11 +4,13 @@
 
 #include <atomic>
 #include <memory>
+#include <JANA/JApplication.h>
+#include "ersap_event_source.hpp"
 
 namespace ersap {
     namespace jana {
 
-        class SampaEngine;
+        // class SampaEngine;
 
         class SampaService : public ersap::Engine
         {
@@ -47,7 +49,10 @@ namespace ersap {
             std::string version() const override;
 
         private:
-            std::shared_ptr<SampaEngine> engine_{};
+            // TODO: Use smart pointers here
+            JApplication* m_app;
+            ErsapEventSource* m_evtsrc;
+            // std::shared_ptr<SampaEngine> engine_{};
         };
 
     } // end namespace jana

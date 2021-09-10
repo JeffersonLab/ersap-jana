@@ -13,7 +13,7 @@ class ErsapEventGroup : public JObject {
 
     mutable std::atomic_int m_events_in_flight {0};
     mutable std::atomic_bool m_group_closed {false};
-    mutable std::vector<T*> m_output_data;
+    mutable std::vector<const T*> m_output_data;
     std::string m_output_tag;
 
 public:
@@ -57,7 +57,7 @@ public:
 
     /// Block until every event in this group has finished, and the eventsource has declared the group closed.
     /// This is meant to be callable from any JANA component.
-    std::vector<T*> WaitUntilFinished() {
+    std::vector<const T*> WaitUntilFinished() {
         while (!(m_group_closed && (m_events_in_flight == 0))) {
             std::this_thread::sleep_for(std::chrono::milliseconds(10));
         }
