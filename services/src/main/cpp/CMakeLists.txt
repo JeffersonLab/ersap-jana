@@ -1,20 +1,18 @@
 # Create one shared library per service
-set(DEMO_SERVICES
-  # jana_service    # Turned off because this wasn't being useful anyway
-)
+#set(DEMO_SERVICES
+#)
+#
+#foreach(service ${DEMO_SERVICES})
+#  add_library(${service} SHARED ${service}.cpp)
+#  target_link_libraries(${service} sampa_data Ersap::ersap)
+#  if (CMAKE_CXX_COMPILER_ID MATCHES Clang)
+#    target_compile_options(${service} PRIVATE -Wno-return-type-c-linkage)
+#  endif()
+#endforeach()
+#
+#install(TARGETS ${DEMO_SERVICES} DESTINATION ${CMAKE_INSTALL_PLUGINDIR}/jana/services)
 
-foreach(service ${DEMO_SERVICES})
-  add_library(${service} SHARED ${service}.cpp)
-  target_link_libraries(${service} sampa_data Ersap::ersap)
-  if (CMAKE_CXX_COMPILER_ID MATCHES Clang)
-    target_compile_options(${service} PRIVATE -Wno-return-type-c-linkage)
-  endif()
-endforeach()
 
-install(TARGETS ${DEMO_SERVICES} DESTINATION ${CMAKE_INSTALL_PLUGINDIR}/jana/services)
-
-
-# Do something different for sampa_service, at least for now
 set(SAMPA_SERVICE_SOURCES
         ersap_event_source.cpp
         ersap_event_source.hpp
