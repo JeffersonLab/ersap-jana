@@ -17,18 +17,23 @@
 template <typename InputT, typename OutputT>
 class ErsapEventProcessor : public JEventProcessor {
 
+    const std::string m_output_tag;
     const std::string helpstr = "Factory must relinquish ownership of its objects by setting the NOT_OBJECT_OWNER flag.  \n"
                                 "Otherwise JANA will delete the objects automatically when it recycles the JEvent, leading \n"
                                 "to a use-after-free bug when you try to access the output data.";
 
 public:
+
+    ErsapEventProcessor(std::string output_tag="") : m_output_tag(std::move(output_tag)) {}
+
+
     void Process(const std::shared_ptr<const JEvent>& event) override {
 
         // In parallel, trigger the recursive factory calls to build the output
-        event->GetSingle<OutputT>();
+        event->GetSingle<OutputT>(m_output_tag);
 
         // Ensure the user isn't immediately going to trigger a use-after-free
-        assert((helpstr, event->GetFactory<OutputT>("")->TestFactoryFlag(JFactory::NOT_OBJECT_OWNER)));
+        assert((helpstr, event->GetFactory<OutputT>(m_output_tag)->TestFactoryFlag(JFactory::NOT_OBJECT_OWNER)));
     }
 };
 

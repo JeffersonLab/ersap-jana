@@ -52,6 +52,7 @@ namespace ersap {
 
         private:
             // TODO: Use smart pointers here
+            // TODO: Deal with multiple threads calling configure() and clobbering JApplication
             JApplication* m_app;
             ErsapEventSource<SampaDASMessage, SampaOutputMessage>* m_evtsrc;
             // std::shared_ptr<SampaEngine> engine_{};
