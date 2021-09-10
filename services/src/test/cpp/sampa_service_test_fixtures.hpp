@@ -1,14 +1,20 @@
 
-// Copyright 2021, Jefferson Science Associates, LLC.
-// Subject to the terms in the LICENSE file found in the top-level directory.
-
-
-#include "sampa_test_factory.hpp"
-
-#include "sampa_data_type.hpp"
-#include "sampa_output_type.hpp"
-#include <JANA/JEvent.h>
+#include <JANA/JFactoryT.h>
 #include <numeric>
+
+
+struct SampaOutputMessage {
+    int sum = 0;
+};
+
+
+class SampaTestFactory : public JFactoryT<SampaOutputMessage> {
+    std::string input_tag;
+public:
+    SampaTestFactory();
+    void Init() override;
+    void Process(const std::shared_ptr<const JEvent>& aEvent) override;
+};
 
 
 SampaTestFactory::SampaTestFactory() {
@@ -30,3 +36,4 @@ void SampaTestFactory::Process(const std::shared_ptr<const JEvent> &event) {
     Insert(summary);
 
 }
+

@@ -19,8 +19,8 @@ set(SAMPA_SERVICE_SOURCES
         ersap_event_group.hpp
         sampa_service.cpp
         sampa_service.hpp
-        sampa_test_factory.cpp
-        sampa_test_factory.hpp
+        sampa_calib_factory.cpp
+        sampa_calib_factory.hpp
         )
 
 add_library(sampa_service SHARED ${SAMPA_SERVICE_SOURCES})

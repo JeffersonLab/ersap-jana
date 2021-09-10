@@ -3,7 +3,7 @@
 
 #include <sampa_data_type.hpp>
 #include "ersap_event_processor.hpp"
-#include "sampa_test_factory.hpp"
+#include "sampa_calib_factory.hpp"
 #include <ersap/stdlib/json_utils.hpp>
 
 #include <JANA/JFactoryGenerator.h>
@@ -42,11 +42,11 @@ namespace ersap {
             // }
 
             m_app = new JApplication(); // (params)
-            m_evtsrc = new ErsapEventSource<SampaDASMessage, SampaOutputMessage>("ErsapEventSource", m_app);
+            m_evtsrc = new ErsapEventSource<SampaDASMessage, SampaDASMessage>("ErsapEventSource", m_app, "", "calibrated");
 
             m_app->Add(m_evtsrc);
-            m_app->Add(new JFactoryGeneratorT<SampaTestFactory>(""));
-            m_app->Add(new ErsapEventProcessor<SampaOutputMessage>());
+            m_app->Add(new JFactoryGeneratorT<SampaCalibFactory>("calibrated"));
+            m_app->Add(new ErsapEventProcessor<SampaDASMessage>("calibrated"));
 
             m_app->Run(false);  // Exit immediately, DON'T block until finished
             return {};

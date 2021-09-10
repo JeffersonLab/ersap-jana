@@ -5,9 +5,9 @@
 #include <gtest/gtest.h>
 #include "ersap_event_processor.hpp"
 #include "sampa_data_type.hpp"
-#include "sampa_output_type.hpp"
-#include "sampa_test_factory.hpp"
 #include "sampa_service.hpp"
+
+#include "sampa_service_test_fixtures.hpp"
 
 #include <JANA/JFactoryGenerator.h>
 
