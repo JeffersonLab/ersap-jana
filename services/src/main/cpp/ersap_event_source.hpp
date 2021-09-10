@@ -32,7 +32,7 @@ public:
     std::vector<const SampaOutputMessage *> SubmitAndWait(std::vector<SampaDASMessage*>& events);
 
 
-    /// GetEvent polls the queue of submitted TridasEvents and feeds them into JEvents along with a
+    /// GetEvent polls the queue of submitted SampaDASMessages and feeds them into JEvents along with a
     /// JEventGroup. A downstream EventProcessor may report the event as being finished. Once all
     /// events in the eventgroup are finished, the corresponding call to SubmitAndWait will unblock.
     void GetEvent(std::shared_ptr<JEvent> event) override;
