@@ -28,7 +28,7 @@ namespace ersap {
             // and configure the service.
             auto config = ersap::stdlib::parse_json(input);
 
-            // TODO: Extract jana_config_file_name from clara config
+            // TODO: Extract jana_config_file_name from ersap config
             auto jana_config_file_name = "config.jana";
 
             std::cout << "Initializing JApplication" << std::endl;fflush(stdout);
@@ -56,35 +56,79 @@ namespace ersap {
         ersap::EngineData SampaService::execute(ersap::EngineData& input) {
             auto output = ersap::EngineData{};
 
-//            time_t end = time(nullptr);
-//             if (end - start >= 1) {
-                // This always loads the shared_pointer into a new shared_ptr
-                // std::atomic_load(&engine_)->process();
-//                start = end;
-//            }
-            // Set and return output data
-//            output.set_data(SAMPA_DAS, processed_data);
+            // If the mime-type is not supported, return an error.
+            if (input.mime_type() != SAMPA_DAS) {
+                output.set_status(ersap::EngineStatus::ERROR);
+                output.set_description("Wrong input type");
+                return output;
+            }
 
-            // TODO: Implement me!
-            return input;
+            auto& sampa_input = ersap::data_cast<SampaDASMessage>(input);
+
+            std::vector<SampaDASMessage*> sampa_inputs;
+            sampa_inputs.push_back(&sampa_input);
+
+            // TODO: Create an EventGroup optimized for exactly one event?
+            // time_t end = time(nullptr);
+            // if (end - start >= 1) {
+            //     // This always loads the shared_pointer into a new shared_ptr
+            //     std::atomic_load(&engine_)->process();
+            //     start = end;
+            // }
+            auto sampa_outputs = m_evtsrc->SubmitAndWait(sampa_inputs);
+
+            // Set and return output data
+            output.set_data(SAMPA_DAS, sampa_outputs[0]);
+
+            return output;
         }
 
-        ersap::EngineData SampaService::execute_group(const std::vector<ersap::EngineData>&)
+
+        ersap::EngineData SampaService::execute_group(const std::vector<ersap::EngineData>& inputs)
         {
-            return {};
+            auto output = ersap::EngineData{};
+            std::vector<SampaDASMessage*> sampa_inputs;
+
+            for (auto input : inputs) {
+
+                // If the mime-type is not supported, return an error.
+                if (input.mime_type() != SAMPA_DAS) {
+                    output.set_status(ersap::EngineStatus::ERROR);
+                    output.set_description("Wrong input type");
+                    return output;
+                }
+                sampa_inputs.push_back(&ersap::data_cast<SampaDASMessage>(input));
+            }
+
+            // time_t end = time(nullptr);
+            // if (end - start >= 1) {
+            //     // This always loads the shared_pointer into a new shared_ptr
+            //     std::atomic_load(&engine_)->process();
+            //     start = end;
+            // }
+
+            auto sampa_outputs = m_evtsrc->SubmitAndWait(sampa_inputs);
+
+            // Set and return output data
+            output.set_data(SAMPA_DAS, sampa_outputs[0]);
+            // TODO: Execute_group is many to one instead of many-to-many. I don't understand!
+
+            return output;
         }
 
         std::vector<ersap::EngineDataType> SampaService::input_data_types() const
         {
-            return { ersap::type::JSON, ersap::type::BYTES };
-//            return { ersap::type::JSON, SAMPA_DAS };
+            // TODO: Need to understand
+            // return { ersap::type::JSON, ersap::type::BYTES };
+            return { ersap::type::JSON, SAMPA_DAS };
         }
 
 
         std::vector<ersap::EngineDataType> SampaService::output_data_types() const
         {
-            return { ersap::type::JSON, ersap::type::BYTES };
-//            return { ersap::type::JSON, SAMPA_DAS };
+            // TODO: Need to understand
+            // return { ersap::type::JSON, ersap::type::BYTES };
+            return { ersap::type::JSON, SAMPA_DAS };
         }
 
 

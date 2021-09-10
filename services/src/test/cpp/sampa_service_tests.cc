@@ -24,9 +24,7 @@ TEST(SampaServiceTests, BasicAssertions) {
     // TODO: Figure out how to insert and retrieve data + metadata from EngineData object
     auto result = sut.execute(ed);
 
-    // TODO: Decide on what to test. Maybe ed should contain the sum of all values in original.payload
     EXPECT_EQ(1,1);
-
 }
 
 TEST(SampaServiceTests, ErsapEventGroupFunctionality) {
