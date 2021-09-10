@@ -23,10 +23,11 @@ set(SAMPA_SERVICE_SOURCES
         )
 
 add_library(sampa_service SHARED ${SAMPA_SERVICE_SOURCES})
-target_include_directories(sampa_service PRIVATE ${JANA_INCLUDE_DIRS})
+target_include_directories(sampa_service PUBLIC ${JANA_INCLUDE_DIRS}
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
+        )
 target_link_libraries(sampa_service sampa_data Ersap::ersap ${JANA_LIBRARIES})
 if (CMAKE_CXX_COMPILER_ID MATCHES Clang)
   target_compile_options(sampa_service PRIVATE -Wno-return-type-c-linkage)
 endif()
 install(TARGETS sampa_service DESTINATION ${CMAKE_INSTALL_PLUGINDIR}/jana/services)
-
