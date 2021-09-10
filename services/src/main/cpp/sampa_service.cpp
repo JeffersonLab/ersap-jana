@@ -42,7 +42,7 @@ namespace ersap {
             // }
 
             m_app = new JApplication(); // (params)
-            m_evtsrc = new ErsapEventSource("ErsapEventSource", m_app);
+            m_evtsrc = new ErsapEventSource<SampaDASMessage, SampaOutputMessage>("ErsapEventSource", m_app);
 
             m_app->Add(m_evtsrc);
             m_app->Add(new JFactoryGeneratorT<SampaTestFactory>(""));

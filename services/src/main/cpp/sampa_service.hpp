@@ -6,6 +6,8 @@
 #include <memory>
 #include <JANA/JApplication.h>
 #include "ersap_event_source.hpp"
+#include "sampa_data_type.hpp"
+#include "sampa_output_type.hpp"
 
 namespace ersap {
     namespace jana {
@@ -51,7 +53,7 @@ namespace ersap {
         private:
             // TODO: Use smart pointers here
             JApplication* m_app;
-            ErsapEventSource* m_evtsrc;
+            ErsapEventSource<SampaDASMessage, SampaOutputMessage>* m_evtsrc;
             // std::shared_ptr<SampaEngine> engine_{};
         };
 

@@ -40,7 +40,7 @@ TEST(SampaServiceTests, ErsapEventGroupFunctionality) {
     expected_outputs[0]->sum = 6;
 
     auto app = new JApplication();
-    auto src = new ErsapEventSource("TestingEventSource", app);
+    auto src = new ErsapEventSource<SampaDASMessage, SampaOutputMessage>("TestingEventSource", app);
     app->Add(src);
     app->Add(new ErsapEventProcessor<SampaDASMessage, SampaOutputMessage>);
     app->Add(new JFactoryGeneratorT<SampaTestFactory>(""));
@@ -62,7 +62,7 @@ TEST(SampaServiceTests, ErsapEventGroupMultiple) {
     inputs[2]->payload = {{22,100}};
 
     auto app = new JApplication();
-    auto src = new ErsapEventSource("TestingEventSource", app);
+    auto src = new ErsapEventSource<SampaDASMessage, SampaOutputMessage>("TestingEventSource", app);
     app->Add(src);
     app->Add(new ErsapEventProcessor<SampaDASMessage, SampaOutputMessage>());
     app->Add(new JFactoryGeneratorT<SampaTestFactory>(""));
