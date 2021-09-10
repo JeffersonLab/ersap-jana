@@ -1,13 +1,12 @@
 #include "ersap_event_source.hpp"
+#include "ersap_event_group.hpp"
 
 ErsapEventSource::ErsapEventSource(std::string res_name, JApplication* app) :
 		JEventSource(std::move(res_name), app) {
-	// TODO: Get EventGroupManager from ServiceLocator instead
-	m_pending_group_id = 1;
 }
 
-void ErsapEventSource::SubmitAndWait(std::vector<SampaDASMessage*>& events) {
-	auto group = m_egm.GetEventGroup(m_pending_group_id++);
+std::vector<SampaOutputMessage*> ErsapEventSource::SubmitAndWait(std::vector<SampaDASMessage*>& events) {
+	auto group = new ErsapEventGroup<SampaOutputMessage>;
 	{
 		std::lock_guard<std::mutex> lock(m_pending_mutex);
 		for (auto event : events) {
@@ -16,12 +15,12 @@ void ErsapEventSource::SubmitAndWait(std::vector<SampaDASMessage*>& events) {
 		}
 	}
 	group->CloseGroup();
-	group->WaitUntilGroupFinished();
+	return group->WaitUntilFinished();
 }
 
 void ErsapEventSource::GetEvent(std::shared_ptr<JEvent> event) {
 
-	std::pair<SampaDASMessage*, JEventGroup*> next_event;
+	std::pair<SampaDASMessage*, ErsapEventGroup<SampaOutputMessage>*> next_event;
 	{
 		std::lock_guard<std::mutex> lock(m_pending_mutex);
 		if (m_pending_events.empty()) {
@@ -38,7 +37,7 @@ void ErsapEventSource::GetEvent(std::shared_ptr<JEvent> event) {
 
 	// Tell JANA not to assume ownership of these objects!
 	event->GetFactory<SampaDASMessage>()->SetFactoryFlag(JFactory::JFactory_Flags_t::NOT_OBJECT_OWNER);
-	event->GetFactory<JEventGroup>()->SetFactoryFlag(JFactory::JFactory_Flags_t::NOT_OBJECT_OWNER);
+	event->GetFactory<ErsapEventGroup<SampaOutputMessage>>()->SetFactoryFlag(JFactory::JFactory_Flags_t::NOT_OBJECT_OWNER);
 
 	// JANA always needs an event number and a run number, so extract these from the Tridas data somehow
 	event->SetEventNumber(next_event.first->get_event_number());

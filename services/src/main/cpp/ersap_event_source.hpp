@@ -6,33 +6,30 @@
 #define JANA2_ErsapEventSource_H
 
 #include <JANA/JEventSource.h>
-#include <JANA/Services/JEventGroupTracker.h>
 #include <JANA/JEvent.h>
 
 #include <queue>
 #include "sampa_data_type.hpp"
+#include "sampa_output_type.hpp"
+#include "ersap_event_group.hpp"
 
 using namespace ersap::jana;
 
 class ErsapEventSource : public JEventSource {
 
-    JEventGroupManager m_egm;
-
-    int m_pending_group_id;
     std::mutex m_pending_mutex;
-    std::queue<std::pair<SampaDASMessage*, JEventGroup*>> m_pending_events;
+    std::queue<std::pair<SampaDASMessage*, ErsapEventGroup<SampaOutputMessage>*>> m_pending_events;
 
 public:
 
     ErsapEventSource(std::string res_name, JApplication* app);
 
-    static std::string GetDescription() { return "CLARA,SAMPA -> JANA Event Source"; }
+    static std::string GetDescription() { return "ERSAP,SAMPA -> JANA Event Source"; }
 
 
-    /// SubmitAndWait provides a blocking interface for pushing groups of TridasEvents into JANA.
+    /// SubmitAndWait provides a blocking interface for pushing groups of SampaDASMessages into JANA.
     /// JANA does NOT assume ownership of the events vector, nor does it clear it.
-    /// TODO: who clears events vector?
-    void SubmitAndWait(std::vector<SampaDASMessage*>& events);
+    std::vector<SampaOutputMessage*> SubmitAndWait(std::vector<SampaDASMessage*>& events);
 
 
     /// GetEvent polls the queue of submitted TridasEvents and feeds them into JEvents along with a
