@@ -42,7 +42,7 @@ TEST(SampaServiceTests, ErsapEventGroupFunctionality) {
     auto app = new JApplication();
     auto src = new ErsapEventSource<SampaDASMessage, SampaOutputMessage>("TestingEventSource", app);
     app->Add(src);
-    app->Add(new ErsapEventProcessor<SampaDASMessage, SampaOutputMessage>);
+    app->Add(new ErsapEventProcessor<SampaOutputMessage>);
     app->Add(new JFactoryGeneratorT<SampaTestFactory>);
     app->Run(false);
 
@@ -64,7 +64,7 @@ TEST(SampaServiceTests, ErsapEventGroupMultiple) {
     auto app = new JApplication();
     auto src = new ErsapEventSource<SampaDASMessage, SampaOutputMessage>("TestingEventSource", app);
     app->Add(src);
-    app->Add(new ErsapEventProcessor<SampaDASMessage, SampaOutputMessage>());
+    app->Add(new ErsapEventProcessor<SampaOutputMessage>());
     app->Add(new JFactoryGeneratorT<SampaTestFactory>);
     app->Run(false);
 
@@ -90,7 +90,7 @@ TEST(SampaServiceTests, ErsapEventGroupWithTags) {
     auto src = new ErsapEventSource<SampaDASMessage, SampaOutputMessage>("TestingEventSource", app, "silly", "sillier");
     app->Add(src);
     app->Add(new JFactoryGeneratorT<SampaTestFactory>("sillier"));
-    app->Add(new ErsapEventProcessor<SampaDASMessage, SampaOutputMessage>("sillier"));
+    app->Add(new ErsapEventProcessor<SampaOutputMessage>("sillier"));
     app->Run(false);
 
     auto actual_outputs = src->SubmitAndWait(inputs);

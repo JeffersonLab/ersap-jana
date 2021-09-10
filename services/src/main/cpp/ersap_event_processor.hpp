@@ -14,7 +14,7 @@
 /// If the OutputT object contains pointers to other objects created by JFactories, the user still has to make
 /// sure that their respective JFactories aren't claiming ownership either.
 
-template <typename InputT, typename OutputT>
+template <typename OutputT>
 class ErsapEventProcessor : public JEventProcessor {
 
     const std::string m_output_tag;

@@ -46,7 +46,7 @@ namespace ersap {
 
             m_app->Add(m_evtsrc);
             m_app->Add(new JFactoryGeneratorT<SampaTestFactory>(""));
-            m_app->Add(new ErsapEventProcessor<SampaDASMessage, SampaOutputMessage>());
+            m_app->Add(new ErsapEventProcessor<SampaOutputMessage>());
 
             m_app->Run(false);  // Exit immediately, DON'T block until finished
             return {};

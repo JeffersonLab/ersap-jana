@@ -10,8 +10,8 @@
 #include <JANA/JFactoryT.h>
 
 class SampaTestFactory : public JFactoryT<SampaOutputMessage> {
-public:
     std::string input_tag;
+public:
     SampaTestFactory();
     void Init() override;
     void Process(const std::shared_ptr<const JEvent>& aEvent) override;
