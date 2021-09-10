@@ -19,11 +19,11 @@ namespace ersap {
             // std:chrono::time_point<std::chrono::steady_clock> timeslice_timestamp;
             // uint32_t channel_id_offset;
 
-            uint64_t get_event_number()  {
+            uint64_t get_event_number() const {
                 return timeslice_id;
             }
 
-            int32_t get_run_number() {
+            int32_t get_run_number() const {
                 return -1;
             }
         };
