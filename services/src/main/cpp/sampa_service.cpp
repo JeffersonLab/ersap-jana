@@ -3,7 +3,10 @@
 
 #include <sampa_data_type.hpp>
 #include "group_event_processor.hpp"
+#include "sampa_test_factory.hpp"
 #include <ersap/stdlib/json_utils.hpp>
+
+#include <JANA/JFactoryGenerator.h>
 
 #include <iostream>
 #include <ctime>
@@ -42,8 +45,8 @@ namespace ersap {
             m_evtsrc = new ErsapEventSource("ErsapEventSource", m_app);
 
             m_app->Add(m_evtsrc);
-            m_app->Add(new GroupedEventProcessor()); // TODO: Move this into ErsapEventSource::Finish() hopefully
-            // Add any event processors you might need
+            m_app->Add(new JFactoryGeneratorT<SampaTestFactory>(""));
+            m_app->Add(new GroupedEventProcessor<SampaDASMessage, SampaOutputMessage>());
 
             m_app->Run(false);  // Exit immediately, DON'T block until finished
             return {};

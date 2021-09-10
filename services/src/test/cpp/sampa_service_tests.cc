@@ -3,10 +3,13 @@
 // Subject to the terms in the LICENSE file found in the top-level directory.
 
 #include <gtest/gtest.h>
-#include <group_event_processor.hpp>
-#include "sampa_output_type.hpp"
+#include "group_event_processor.hpp"
 #include "sampa_data_type.hpp"
+#include "sampa_output_type.hpp"
+#include "sampa_test_factory.hpp"
 #include "sampa_service.hpp"
+
+#include <JANA/JFactoryGenerator.h>
 
 using namespace ersap::jana;
 
@@ -39,7 +42,8 @@ TEST(SampaServiceTests, ErsapEventGroupFunctionality) {
     auto app = new JApplication();
     auto src = new ErsapEventSource("TestingEventSource", app);
     app->Add(src);
-    app->Add(new GroupedEventProcessor);
+    app->Add(new GroupedEventProcessor<SampaDASMessage, SampaOutputMessage>);
+    app->Add(new JFactoryGeneratorT<SampaTestFactory>(""));
     app->Run(false);
 
     auto actual_outputs = src->SubmitAndWait(inputs);
@@ -60,7 +64,8 @@ TEST(SampaServiceTests, ErsapEventGroupMultiple) {
     auto app = new JApplication();
     auto src = new ErsapEventSource("TestingEventSource", app);
     app->Add(src);
-    app->Add(new GroupedEventProcessor);
+    app->Add(new GroupedEventProcessor<SampaDASMessage, SampaOutputMessage>());
+    app->Add(new JFactoryGeneratorT<SampaTestFactory>(""));
     app->Run(false);
 
     auto actual_outputs = src->SubmitAndWait(inputs);
