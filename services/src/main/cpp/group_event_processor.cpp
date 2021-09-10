@@ -20,7 +20,9 @@ void GroupedEventProcessor::Process(const std::shared_ptr<const JEvent>& event) 
 	    summary->sum = std::accumulate(std::begin(sampa_message->payload[0]), std::end(sampa_message->payload[0]), 0);
 	}
     LOG << "Setting sum=" << summary->sum << LOG_END;
-    event->Insert(summary); // TODO: Constness doesn't prevent this. Consider.
+    event->Insert(summary)->SetFactoryFlag(JFactory::NOT_OBJECT_OWNER); // TODO: Constness doesn't prevent this. Consider.
+    // TODO: Need to ASSERT that factory flag is NOT_OBJECT_OWNER because otherwise the use-after-free
+    //       will be impossible for the user to debug
 
 	// Sequentially, process each event and report when a group finishes
 	std::lock_guard<std::mutex> lock(m_mutex);
