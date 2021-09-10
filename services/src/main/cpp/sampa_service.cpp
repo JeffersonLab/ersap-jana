@@ -2,7 +2,7 @@
 #include "sampa_service.hpp"
 
 #include <sampa_data_type.hpp>
-#include "group_event_processor.hpp"
+#include "ersap_event_processor.hpp"
 #include "sampa_test_factory.hpp"
 #include <ersap/stdlib/json_utils.hpp>
 
@@ -46,7 +46,7 @@ namespace ersap {
 
             m_app->Add(m_evtsrc);
             m_app->Add(new JFactoryGeneratorT<SampaTestFactory>(""));
-            m_app->Add(new GroupedEventProcessor<SampaDASMessage, SampaOutputMessage>());
+            m_app->Add(new ErsapEventProcessor<SampaDASMessage, SampaOutputMessage>());
 
             m_app->Run(false);  // Exit immediately, DON'T block until finished
             return {};
@@ -65,6 +65,7 @@ namespace ersap {
             // Set and return output data
 //            output.set_data(SAMPA_DAS, processed_data);
 
+            // TODO: Implement me!
             return input;
         }
 

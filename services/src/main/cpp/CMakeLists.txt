@@ -16,7 +16,7 @@
 set(SAMPA_SERVICE_SOURCES
         ersap_event_source.cpp
         ersap_event_source.hpp
-        group_event_processor.hpp
+        ersap_event_processor.hpp
         ersap_event_group.hpp
         sampa_service.cpp
         sampa_service.hpp

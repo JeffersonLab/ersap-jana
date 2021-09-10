@@ -16,6 +16,8 @@ class ErsapEventGroup : public JObject {
     mutable std::vector<const InputT*> m_input_data;
     mutable std::map<const InputT*, const OutputT*> m_finished_data;
 
+    /// TODO: Figure out whether or not m_finished_data is accessed safely
+
 public:
     /// Record that another event belonging to this group has been emitted.
     /// This is meant to be called from JEventSource::GetEvent.
