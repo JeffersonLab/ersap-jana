@@ -8,18 +8,19 @@
 
 #include <JANA/JObject.h>
 
-template <typename T>
+template <typename InputT, typename OutputT>
 class ErsapEventGroup : public JObject {
 
     mutable std::atomic_int m_events_in_flight {0};
     mutable std::atomic_bool m_group_closed {false};
-    mutable std::vector<const T*> m_output_data;
-    std::string m_output_tag;
+    mutable std::vector<const InputT*> m_input_data;
+    mutable std::map<const InputT*, const OutputT*> m_finished_data;
 
 public:
     /// Record that another event belonging to this group has been emitted.
     /// This is meant to be called from JEventSource::GetEvent.
-    void StartEvent() const {
+    void StartEvent(const InputT* event) const {
+        m_input_data.push_back(event);
         m_events_in_flight.fetch_add(1);
         m_group_closed = false;
     }
@@ -36,10 +37,9 @@ public:
     /// This takes advantage of C++ atomics to detect if _we_ were the one who finished the whole group without
     /// needing a lock.
     /// This is meant to be called from JEventProcessor::Process.
-    bool FinishEvent(const std::shared_ptr<const JEvent>& event) const {
+    bool FinishEvent(const InputT* input, const OutputT* output) const {
 
-        auto output = event->GetSingle<T>(m_output_tag);  // The data needs to be PERSISTENT in order to avoid double-frees
-        m_output_data.push_back(output);
+        m_finished_data.insert({input, output}); // TODO: not thread safe
         auto prev_events_in_flight = m_events_in_flight.fetch_sub(1);
         assert(prev_events_in_flight > 0); // detect if someone is miscounting
         return (prev_events_in_flight == 1) && m_group_closed;
@@ -57,11 +57,16 @@ public:
 
     /// Block until every event in this group has finished, and the eventsource has declared the group closed.
     /// This is meant to be callable from any JANA component.
-    std::vector<const T*> WaitUntilFinished() {
+    std::vector<const OutputT*> WaitUntilFinished() {
         while (!(m_group_closed && (m_events_in_flight == 0))) {
             std::this_thread::sleep_for(std::chrono::milliseconds(10));
         }
-        return m_output_data;
+        std::vector<const OutputT*> output_data;
+        // Enforce that outputs are ordered corresponding to the inputs
+        for (auto input : m_input_data) {
+            output_data.push_back(m_finished_data[input]);
+        }
+        return output_data;
 
         // TODO: Should ErsapEventGroup retain m_output_data pointers?
         //       ErsapEventGroup CANNOT own these things since it's lifespan ends with JES::FinishEvent().

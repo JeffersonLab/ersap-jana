@@ -9,7 +9,7 @@
 
 void GroupedEventProcessor::Process(const std::shared_ptr<const JEvent>& event) {
 
-	auto group = event->GetSingle<ErsapEventGroup<SampaOutputMessage>>();
+	auto group = event->GetSingle<ErsapEventGroup<ersap::jana::SampaDASMessage, SampaOutputMessage>>();
 
 	// In parallel, extract payload and do some calculations on it
 	// This should REALLY be in a JFactory, except this is throwaway work for the sake of the test cases
@@ -27,7 +27,7 @@ void GroupedEventProcessor::Process(const std::shared_ptr<const JEvent>& event) 
 	// Sequentially, process each event and report when a group finishes
 	std::lock_guard<std::mutex> lock(m_mutex);
 
-	bool finishes_group = group->FinishEvent(event);
+	bool finishes_group = group->FinishEvent(sampa_message, summary);
 	if (finishes_group) {
 		LOG << "Processed last element in group! " << LOG_END;
 	}

@@ -6,11 +6,11 @@ ErsapEventSource::ErsapEventSource(std::string res_name, JApplication* app) :
 }
 
 std::vector<const SampaOutputMessage *> ErsapEventSource::SubmitAndWait(std::vector<SampaDASMessage*>& events) {
-	auto group = new ErsapEventGroup<SampaOutputMessage>;
+	auto group = new ErsapEventGroup<SampaDASMessage, SampaOutputMessage>;
 	{
 		std::lock_guard<std::mutex> lock(m_pending_mutex);
 		for (auto event : events) {
-			group->StartEvent();   // We have to call this immediately in order to 'open' the group
+			group->StartEvent(event);   // We have to call this immediately in order to 'open' the group
 			m_pending_events.push(std::make_pair(event, group));
 		}
 	}
@@ -20,7 +20,7 @@ std::vector<const SampaOutputMessage *> ErsapEventSource::SubmitAndWait(std::vec
 
 void ErsapEventSource::GetEvent(std::shared_ptr<JEvent> event) {
 
-	std::pair<SampaDASMessage*, ErsapEventGroup<SampaOutputMessage>*> next_event;
+	std::pair<SampaDASMessage*, ErsapEventGroup<SampaDASMessage, SampaOutputMessage>*> next_event;
 	{
 		std::lock_guard<std::mutex> lock(m_pending_mutex);
 		if (m_pending_events.empty()) {
@@ -37,7 +37,7 @@ void ErsapEventSource::GetEvent(std::shared_ptr<JEvent> event) {
 
 	// Tell JANA not to assume ownership of these objects!
 	event->GetFactory<SampaDASMessage>()->SetFactoryFlag(JFactory::JFactory_Flags_t::NOT_OBJECT_OWNER);
-	event->GetFactory<ErsapEventGroup<SampaOutputMessage>>()->SetFactoryFlag(JFactory::JFactory_Flags_t::NOT_OBJECT_OWNER);
+	event->GetFactory<ErsapEventGroup<SampaDASMessage, SampaOutputMessage>>()->SetFactoryFlag(JFactory::JFactory_Flags_t::NOT_OBJECT_OWNER);
 
 	// JANA always needs an event number and a run number, so extract these from the Tridas data somehow
 	event->SetEventNumber(next_event.first->get_event_number());

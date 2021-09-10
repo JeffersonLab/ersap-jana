@@ -18,7 +18,7 @@ using namespace ersap::jana;
 class ErsapEventSource : public JEventSource {
 
     std::mutex m_pending_mutex;
-    std::queue<std::pair<SampaDASMessage*, ErsapEventGroup<SampaOutputMessage>*>> m_pending_events;
+    std::queue<std::pair<SampaDASMessage*, ErsapEventGroup<SampaDASMessage, SampaOutputMessage>*>> m_pending_events;
 
 public:
 
