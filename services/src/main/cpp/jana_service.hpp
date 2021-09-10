@@ -1,7 +1,10 @@
 #ifndef SCIA_RESAMPLING_SERVICE_HPP
 #define SCIA_RESAMPLING_SERVICE_HPP
 
+#include "ersap_event_source.hpp"
+
 #include <ersap/engine.hpp>
+#include <JANA/JApplication.h>
 
 #include <atomic>
 #include <memory>
@@ -49,6 +52,8 @@ public:
 
 private:
     std::shared_ptr<JanaEngine> engine_{};
+    JApplication* m_app = nullptr;
+    ErsapEventSource* m_evtsrc = nullptr;
 };
 
 } // end namespace jana

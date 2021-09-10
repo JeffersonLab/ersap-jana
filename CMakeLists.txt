@@ -37,7 +37,9 @@ endif()
 
 
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake/Modules)
+list(APPEND CMAKE_PREFIX_PATH $ENV{JANA_HOME}/lib/cmake ${JANA_HOME}/lib/cmake)
 
+find_package(JANA REQUIRED)
 find_package(Ersap REQUIRED)
 
 enable_testing()

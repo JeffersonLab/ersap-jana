@@ -2,27 +2,29 @@
 // Created by Nathan Brei on 2019-12-15.
 //
 
-#ifndef JANA2_ClaraEventSource_H
-#define JANA2_ClaraEventSource_H
+#ifndef JANA2_ErsapEventSource_H
+#define JANA2_ErsapEventSource_H
 
 #include <JANA/JEventSource.h>
 #include <JANA/Services/JEventGroupTracker.h>
 #include <JANA/JEvent.h>
 
 #include <queue>
-#include "sampa_event.hpp"
+#include "sampa_data_type.hpp"
 
-class ClaraEventSource : public JEventSource {
+using namespace ersap::jana;
+
+class ErsapEventSource : public JEventSource {
 
     JEventGroupManager m_egm;
 
     int m_pending_group_id;
     std::mutex m_pending_mutex;
-    std::queue<std::pair<SampaEvent*, JEventGroup*>> m_pending_events;
+    std::queue<std::pair<SampaDASMessage*, JEventGroup*>> m_pending_events;
 
 public:
 
-    ClaraEventSource(std::string res_name, JApplication* app);
+    ErsapEventSource(std::string res_name, JApplication* app);
 
     static std::string GetDescription() { return "CLARA,SAMPA -> JANA Event Source"; }
 
@@ -30,7 +32,7 @@ public:
     /// SubmitAndWait provides a blocking interface for pushing groups of TridasEvents into JANA.
     /// JANA does NOT assume ownership of the events vector, nor does it clear it.
     /// TODO: who clears events vector?
-    void SubmitAndWait(std::vector<SampaEvent*>& events);
+    void SubmitAndWait(std::vector<SampaDASMessage*>& events);
 
 
     /// GetEvent polls the queue of submitted TridasEvents and feeds them into JEvents along with a
@@ -41,4 +43,4 @@ public:
 };
 
 
-#endif //JANA2_ClaraEventSource_H
+#endif //JANA2_ErsapEventSource_H

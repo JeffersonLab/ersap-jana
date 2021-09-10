@@ -38,6 +38,28 @@ ersap::EngineData JanaService::configure(ersap::EngineData& input)
     // (This service is actually stateless, so detector_ could just simply be
     // initialized in the service constructor).
     std::atomic_store(&engine_, std::make_shared<JanaEngine>());
+
+    // TODO: Extract jana_config_file_name from clara config
+    auto jana_config_file_name = "config.jana";
+
+    std::cout << "Initializing JApplication" << std::endl;fflush(stdout);
+    // std::cout << "Loading options from " << jana_config_file_name << std::endl;fflush(stdout);
+    // auto params = new JParameterManager;
+    // try {
+    //     params->ReadConfigFile(jana_config_file_name);
+    // } catch (JException& e) {
+    //     std::cout << "Problem reading config file '" << jana_config_file_name << "'. Exiting." << std::endl << std::endl;
+    //     exit(-1);
+    // }
+
+    m_app = new JApplication(); // (params)
+    m_evtsrc = new ClaraEventSource("ClaraEventSource", m_app);
+
+    m_app->Add(m_evtsrc);
+    m_app->Add(new GroupedEventProcessor()); // TODO: Move this into ClaraEventSource::Finish() hopefully
+    // Add any event processors you might need
+
+    m_app->Run(false);  // Exit immediately, DON'T block until finished
     return {};
 }
 
@@ -48,7 +70,7 @@ ersap::EngineData JanaService::execute(ersap::EngineData& input) {
     time_t end = time(nullptr);
 
     if (end - start >= 10) {
-    // This always loads the shared_pointer into a new shared_ptr
+        // This always loads the shared_pointer into a new shared_ptr
     std::atomic_load(&engine_)->process();
     start = end;
 }

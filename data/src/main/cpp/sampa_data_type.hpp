@@ -15,9 +15,17 @@ namespace ersap {
             // We don't need these right this moment but eventually we might
             // Ersap thinks of these as "metadata" but they still need to be made available to JANA
 
-            // uint64_t timeslice_id;
+            uint64_t timeslice_id = 0;
             // std:chrono::time_point<std::chrono::steady_clock> timeslice_timestamp;
             // uint32_t channel_id_offset;
+
+            uint64_t get_event_number()  {
+                return timeslice_id;
+            }
+
+            int32_t get_run_number() {
+                return -1;
+            }
         };
 
         class SampaSerializer : public ersap::Serializer {
