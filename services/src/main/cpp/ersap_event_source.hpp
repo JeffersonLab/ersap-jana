@@ -28,14 +28,19 @@ public:
 
 
     /// SubmitAndWait provides a blocking interface for pushing groups of SampaDASMessages into JANA.
-    /// JANA does NOT assume ownership of the events vector, nor does it clear it.
+    /// JANA does NOT assume ownership of the events vector, nor does it clear it. Note: This must only
+    /// be called once, because ownership of the SampaOutputMessages transfers to the caller.
     std::vector<const SampaOutputMessage *> SubmitAndWait(std::vector<SampaDASMessage*>& events);
 
 
-    /// GetEvent polls the queue of submitted SampaDASMessages and feeds them into JEvents along with a
-    /// JEventGroup. A downstream EventProcessor may report the event as being finished. Once all
-    /// events in the eventgroup are finished, the corresponding call to SubmitAndWait will unblock.
+    /// GetEvent polls the queue of submitted SampaDASMessages and feeds them into JEvents.
     void GetEvent(std::shared_ptr<JEvent> event) override;
+
+
+    /// FinishEvent is the final method that gets called to close out each JEvent before it gets recycled.
+    /// This is where we report our event as being finished. Once all events in the eventgroup are finished,
+    /// the corresponding call to SubmitAndWait will unblock.
+    void FinishEvent(JEvent& event) override;
 
 };
 

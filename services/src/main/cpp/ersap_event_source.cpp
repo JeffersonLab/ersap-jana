@@ -1,21 +1,24 @@
 #include "ersap_event_source.hpp"
 #include "ersap_event_group.hpp"
 
-ErsapEventSource::ErsapEventSource(std::string res_name, JApplication* app) :
-		JEventSource(std::move(res_name), app) {
+ErsapEventSource::ErsapEventSource(std::string res_name, JApplication* app) : JEventSource(std::move(res_name), app) {
+    EnableFinishEvent();
 }
 
 std::vector<const SampaOutputMessage *> ErsapEventSource::SubmitAndWait(std::vector<SampaDASMessage*>& events) {
 	auto group = new ErsapEventGroup<SampaDASMessage, SampaOutputMessage>;
-	{
-		std::lock_guard<std::mutex> lock(m_pending_mutex);
+    LOG << "Starting group " << group << LOG_END;
+    {
+        std::lock_guard<std::mutex> lock(m_pending_mutex);
 		for (auto event : events) {
 			group->StartEvent(event);   // We have to call this immediately in order to 'open' the group
 			m_pending_events.push(std::make_pair(event, group));
 		}
 	}
 	group->CloseGroup();
-	return group->WaitUntilFinished();
+	auto results = group->WaitUntilFinished();
+	delete group;
+	return results;
 }
 
 void ErsapEventSource::GetEvent(std::shared_ptr<JEvent> event) {
@@ -44,3 +47,16 @@ void ErsapEventSource::GetEvent(std::shared_ptr<JEvent> event) {
 	event->SetRunNumber(next_event.first->get_run_number());
 }
 
+
+void ErsapEventSource::FinishEvent(JEvent& event) {
+
+    auto group = event.GetSingle<ErsapEventGroup<SampaDASMessage, SampaOutputMessage>>();
+    auto input = event.GetSingle<SampaDASMessage>();
+    auto output = event.GetSingle<SampaOutputMessage>();
+
+    LOG << "Finishing group " << group << ", event " << event.GetEventNumber() << LOG_END;
+    bool entire_group_finished = group->FinishEvent(input, output);
+    if (entire_group_finished) {
+        LOG << "Finishing group " << group << LOG_END;
+    }
+}

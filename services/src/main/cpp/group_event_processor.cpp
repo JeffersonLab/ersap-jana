@@ -26,11 +26,5 @@ void GroupedEventProcessor::Process(const std::shared_ptr<const JEvent>& event) 
 
 	// Sequentially, process each event and report when a group finishes
 	std::lock_guard<std::mutex> lock(m_mutex);
-
-	bool finishes_group = group->FinishEvent(sampa_message, summary);
-	if (finishes_group) {
-		LOG << "Processed last element in group! " << LOG_END;
-	}
-	// TODO: Someone has to own the ErsapEventGroup
 }
 
