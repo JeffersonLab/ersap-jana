@@ -58,6 +58,7 @@ include(GoogleTest)
 
 add_subdirectory(data/src/main/cpp)
 add_subdirectory(data/src/test/cpp)
-add_subdirectory(services/src/main/cpp)
-add_subdirectory(services/src/test/cpp)
+add_subdirectory(services/sampa/main/cpp)
+add_subdirectory(services/sampa/test/cpp)
+
 
