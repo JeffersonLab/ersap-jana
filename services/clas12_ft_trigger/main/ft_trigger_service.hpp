@@ -6,6 +6,13 @@
 #ifndef ERSAP_JANA_FT_TRIGGER_SERVICE_HPP
 #define ERSAP_JANA_FT_TRIGGER_SERVICE_HPP
 
+#include <ersap/engine.hpp>
+#include <JANA/JApplication.h>
+
+#include "InputDataFormat.hpp"
+#include "OutputDataFormat.hpp"
+#include "ersap_event_source.hpp"
+
 
 class FTTriggerService : public ersap::Engine
 {
@@ -47,7 +54,7 @@ private:
     // TODO: Use smart pointers here
     // TODO: Deal with multiple threads calling configure() and clobbering JApplication
     JApplication* m_app;
-    ErsapEventSource<SampaDASMessage, SampaDASMessage>* m_evtsrc;
+    ErsapEventSource<TridasTimeslice, ProcessedEvent>* m_evtsrc;
     // std::shared_ptr<SampaEngine> engine_{};
 };
 class clas12_ft_trigger_service {

@@ -3,7 +3,12 @@
 // Subject to the terms in the LICENSE file found in the top-level directory.
 
 
+#include <ersap/stdlib/json_utils.hpp>
+#include <JANA/JFactoryGenerator.h>
 #include "ft_trigger_service.hpp"
+#include "InputDataFormat.hpp"
+#include "OutputDataFormat.hpp"
+
 
 ersap::EngineData FTTriggerService::configure(ersap::EngineData& input)
 {
@@ -25,7 +30,7 @@ ersap::EngineData FTTriggerService::configure(ersap::EngineData& input)
     // }
 
     m_app = new JApplication(); // (params)
-    m_evtsrc = new ErsapEventSource<SampaDASMessage, SampaDASMessage>("ErsapEventSource", m_app, "", "calibrated");
+    m_evtsrc = new ErsapEventSource<TridasTimeslice, ProcessedEvent>("CLAS12-FTCal-Trigger-EventSource", m_app, "", "calibrated");
 
     m_app->Add(m_evtsrc);
     m_app->Add(new JFactoryGeneratorT<SampaCalibFactory>("calibrated"));
