@@ -52,6 +52,17 @@ struct DataFrameHeader {
 struct TridasEvent {
     TEHeaderInfo header;
     std::vector<DataFrameHeader> dataframes;
+
+    size_t get_event_number() {
+        return header.EventID;
+        // TODO: Are EventIDs unique, or repeat across different timeslices?
+        //       If they repeat, we need to include the timeslice ID as well in order to make the JANA evtnr unique
+    }
+
+    size_t get_run_number() {
+        return 0; // TODO: Figure out where we get a run number from.
+    }
+
 };
 
 struct TridasTimeslice {

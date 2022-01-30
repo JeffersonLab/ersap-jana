@@ -8,6 +8,12 @@
 #include "ft_trigger_service.hpp"
 #include "InputDataFormat.hpp"
 #include "OutputDataFormat.hpp"
+#include "ersap_event_processor.hpp"
+
+#include "FT/FTCalCluster_factory.h"
+#include "FT/FTCalCluster_factory_km.h"
+#include "FT/FTCalCluster_factory_hdbscan.h"
+#include "FT/FTCalHit_factory.h"
 
 
 ersap::EngineData FTTriggerService::configure(ersap::EngineData& input)
@@ -30,11 +36,14 @@ ersap::EngineData FTTriggerService::configure(ersap::EngineData& input)
     // }
 
     m_app = new JApplication(); // (params)
-    m_evtsrc = new ErsapEventSource<TridasTimeslice, ProcessedEvent>("CLAS12-FTCal-Trigger-EventSource", m_app, "", "calibrated");
+    m_evtsrc = new ErsapEventSource<TridasEvent, ProcessedEvent>("CLAS12-FTCal-Trigger-EventSource", m_app, "", "calibrated");
 
     m_app->Add(m_evtsrc);
-    m_app->Add(new JFactoryGeneratorT<SampaCalibFactory>("calibrated"));
-    m_app->Add(new ErsapEventProcessor<SampaDASMessage>("calibrated"));
+    m_app->Add(new JFactoryGeneratorT<FTCalCluster_factory>);
+    m_app->Add(new JFactoryGeneratorT<FTCalCluster_factory_hdbscan>);
+    m_app->Add(new JFactoryGeneratorT<FTCalCluster_factory_km>);
+    m_app->Add(new JFactoryGeneratorT<FTCalHit_factory>);
+    m_app->Add(new ErsapEventProcessor<ProcessedEvent>());
 
     m_app->Run(false);  // Exit immediately, DON'T block until finished
     return {};
@@ -45,16 +54,20 @@ ersap::EngineData FTTriggerService::execute(ersap::EngineData& input) {
     auto output = ersap::EngineData{};
 
     // If the mime-type is not supported, return an error.
-    if (input.mime_type() != SAMPA_DAS) {
+    if (input.mime_type() != TRIDAS_TIMESLICE) {
         output.set_status(ersap::EngineStatus::ERROR);
         output.set_description("Wrong input type");
         return output;
     }
 
-    auto& sampa_input = ersap::data_cast<SampaDASMessage>(input);
+    auto& tridas_timeslice = ersap::data_cast<TridasTimeslice>(input);
+    // tridas_timeslice owns the TridasEvent objects.
+    // We pass JANA a non-owning pointer to each.
 
-    std::vector<SampaDASMessage*> sampa_inputs;
-    sampa_inputs.push_back(&sampa_input);
+    std::vector<TridasEvent*> tridas_events;
+    for (TridasEvent& te : tridas_timeslice.events) {
+        tridas_events.push_back(&te);
+    }
 
     // TODO: Create an EventGroup optimized for exactly one event?
     // time_t end = time(nullptr);
@@ -63,10 +76,11 @@ ersap::EngineData FTTriggerService::execute(ersap::EngineData& input) {
     //     std::atomic_load(&engine_)->process();
     //     start = end;
     // }
-    auto sampa_outputs = m_evtsrc->SubmitAndWait(sampa_inputs);
+    auto outputs = m_evtsrc->SubmitAndWait(tridas_events);
 
     // Set and return output data
-    output.set_data(SAMPA_DAS, sampa_outputs[0]);
+    output.set_data(FTCAL_TRIGGER, outputs);
+    // TODO: Right now this is a vector. Need to figure out how to do one-in,many-out in ERSAP
 
     return output;
 }
@@ -74,41 +88,15 @@ ersap::EngineData FTTriggerService::execute(ersap::EngineData& input) {
 
 ersap::EngineData FTTriggerService::execute_group(const std::vector<ersap::EngineData>& inputs)
 {
-    auto output = ersap::EngineData{};
-    std::vector<SampaDASMessage*> sampa_inputs;
-
-    for (auto input : inputs) {
-
-        // If the mime-type is not supported, return an error.
-        if (input.mime_type() != SAMPA_DAS) {
-            output.set_status(ersap::EngineStatus::ERROR);
-            output.set_description("Wrong input type");
-            return output;
-        }
-        sampa_inputs.push_back(&ersap::data_cast<SampaDASMessage>(input));
-    }
-
-    // time_t end = time(nullptr);
-    // if (end - start >= 1) {
-    //     // This always loads the shared_pointer into a new shared_ptr
-    //     std::atomic_load(&engine_)->process();
-    //     start = end;
-    // }
-
-    auto sampa_outputs = m_evtsrc->SubmitAndWait(sampa_inputs);
-
-    // Set and return output data
-    output.set_data(SAMPA_DAS, sampa_outputs[0]);
-    // TODO: Execute_group is many to one instead of many-to-many. I don't understand!
-
-    return output;
+    // TODO: Talk to Vardan about
+    return {};
 }
 
 std::vector<ersap::EngineDataType> FTTriggerService::input_data_types() const
 {
     // TODO: Need to understand
     // return { ersap::type::JSON, ersap::type::BYTES };
-    return { ersap::type::JSON, SAMPA_DAS };
+    return { ersap::type::JSON, TRIDAS_TIMESLICE };
 }
 
 
@@ -116,7 +104,7 @@ std::vector<ersap::EngineDataType> FTTriggerService::output_data_types() const
 {
     // TODO: Need to understand
     // return { ersap::type::JSON, ersap::type::BYTES };
-    return { ersap::type::JSON, SAMPA_DAS };
+    return {  };
 }
 
 
@@ -134,13 +122,13 @@ std::string FTTriggerService::name() const
 
 std::string FTTriggerService::author() const
 {
-    return "Vardan Gyurjyan";
+    return "Nathan Brei";
 }
 
 
 std::string FTTriggerService::description() const
 {
-    return "Jana based sampa data processing service example";
+    return "Jana based FTCal trigger service example";
 }
 
 

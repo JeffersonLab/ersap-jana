@@ -54,7 +54,7 @@ private:
     // TODO: Use smart pointers here
     // TODO: Deal with multiple threads calling configure() and clobbering JApplication
     JApplication* m_app;
-    ErsapEventSource<TridasTimeslice, ProcessedEvent>* m_evtsrc;
+    ErsapEventSource<TridasEvent, ProcessedEvent>* m_evtsrc;
     // std::shared_ptr<SampaEngine> engine_{};
 };
 class clas12_ft_trigger_service {
