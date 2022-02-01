@@ -36,14 +36,14 @@ ersap::EngineData FTTriggerService::configure(ersap::EngineData& input)
     // }
 
     m_app = new JApplication(); // (params)
-    m_evtsrc = new ErsapEventSource<TridasEvent, ProcessedEvent>("CLAS12-FTCal-Trigger-EventSource", m_app, "", "calibrated");
+    m_evtsrc = new ErsapEventSource<TridasEvent, FTCalTriggerEvent>("CLAS12-FTCal-Trigger-EventSource", m_app, "", "calibrated");
 
     m_app->Add(m_evtsrc);
     m_app->Add(new JFactoryGeneratorT<FTCalCluster_factory>);
     m_app->Add(new JFactoryGeneratorT<FTCalCluster_factory_hdbscan>);
     m_app->Add(new JFactoryGeneratorT<FTCalCluster_factory_km>);
     m_app->Add(new JFactoryGeneratorT<FTCalHit_factory>);
-    m_app->Add(new ErsapEventProcessor<ProcessedEvent>());
+    m_app->Add(new ErsapEventProcessor<FTCalTriggerEvent>());
 
     m_app->Run(false);  // Exit immediately, DON'T block until finished
     return {};
@@ -54,20 +54,17 @@ ersap::EngineData FTTriggerService::execute(ersap::EngineData& input) {
     auto output = ersap::EngineData{};
 
     // If the mime-type is not supported, return an error.
-    if (input.mime_type() != TRIDAS_TIMESLICE) {
+    if (input.mime_type() != TRIDAS_EVENT) {
         output.set_status(ersap::EngineStatus::ERROR);
         output.set_description("Wrong input type");
         return output;
     }
 
-    auto& tridas_timeslice = ersap::data_cast<TridasTimeslice>(input);
-    // tridas_timeslice owns the TridasEvent objects.
+    auto& tridas_event = ersap::data_cast<TridasEvent>(input);
     // We pass JANA a non-owning pointer to each.
 
     std::vector<TridasEvent*> tridas_events;
-    for (TridasEvent& te : tridas_timeslice.events) {
-        tridas_events.push_back(&te);
-    }
+    tridas_events.push_back(&tridas_event);
 
     // TODO: Create an EventGroup optimized for exactly one event?
     // time_t end = time(nullptr);
@@ -80,8 +77,6 @@ ersap::EngineData FTTriggerService::execute(ersap::EngineData& input) {
 
     // Set and return output data
     output.set_data(FTCAL_TRIGGER, outputs);
-    // TODO: Right now this is a vector. Need to figure out how to do one-in,many-out in ERSAP
-
     return output;
 }
 
@@ -96,7 +91,7 @@ std::vector<ersap::EngineDataType> FTTriggerService::input_data_types() const
 {
     // TODO: Need to understand
     // return { ersap::type::JSON, ersap::type::BYTES };
-    return { ersap::type::JSON, TRIDAS_TIMESLICE };
+    return { ersap::type::JSON, TRIDAS_EVENT };
 }
 
 

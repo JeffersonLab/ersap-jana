@@ -6,6 +6,7 @@
 #ifndef ERSAP_JANA_INPUTDATAFORMAT_HPP
 #define ERSAP_JANA_INPUTDATAFORMAT_HPP
 
+#include <ersap/engine_data_type.hpp>
 
 const unsigned int MAX_PLUGINS_NUMBER  = 8;
 const unsigned int MAX_TRIGGERS_NUMBER = 5;
@@ -69,6 +70,14 @@ struct TridasTimeslice {
     TimeSliceHeader header;
     std::vector<TridasEvent> events;
 };
+
+struct TridasEventSerializer : public ersap::Serializer {
+    std::vector<std::uint8_t> write(const ersap::any& data) const;
+    ersap::any read(const std::vector<std::uint8_t>& buffer) const;
+};
+
+const ersap::EngineDataType TRIDAS_EVENT {"binary/tridas-event",
+                                      std::make_unique<TridasEventSerializer>()};
 
 // The code below isn't going to work because sizeof(Event) is not constant.
 // I will figure out how to unpack the buffers later once I understand what the existing code already does

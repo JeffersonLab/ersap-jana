@@ -9,13 +9,22 @@
 #include "Trigger/TriggerDecision.h"
 #include "FT/FTCalCluster.h"
 
+#include <ersap/engine_data_type.hpp>
+
 // TODO: I have no idea what this should be, probably EVIO, but I don't know how to do that yet,
 // so instead I'm going to defer the decision on how to serialize until later
 
-struct ProcessedEvent {
+struct FTCalTriggerEvent {
     std::vector<TriggerDecision*> triggerDecisions;
     std::vector<FTCalHit*> ftcal_hits;
     std::vector<FTCalCluster*> ftcal_clusters;
 };
 
+struct FTCalTriggerEventSerializer : public ersap::Serializer {
+    std::vector<std::uint8_t> write(const ersap::any& data) const;
+    ersap::any read(const std::vector<std::uint8_t>& buffer) const;
+};
+
+const ersap::EngineDataType FTCAL_TRIGGER {"binary/ft-cal-trigger-event",
+                                           std::make_unique<FTCalTriggerEventSerializer>()};
 #endif //ERSAP_JANA_OUTPUTDATAFORMAT_HPP
