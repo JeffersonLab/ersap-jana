@@ -12,9 +12,9 @@
 #include <ersap/engine_data_type.hpp>
 
 struct FTCalTriggerEvent {
-    std::vector<TriggerDecision*> triggerDecisions;
-    std::vector<FTCalHit*> ftcal_hits;
-    std::vector<FTCalCluster*> ftcal_clusters;
+    std::vector<const TriggerDecision*> triggerDecisions;
+    std::vector<const FTCalHit*> ftcal_hits;
+    std::vector<const FTCalCluster*> ftcal_clusters;
 };
 
 struct FTCalTriggerEventSerializer : public ersap::Serializer {

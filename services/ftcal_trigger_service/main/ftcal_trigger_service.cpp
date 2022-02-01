@@ -5,15 +5,20 @@
 
 #include <ersap/stdlib/json_utils.hpp>
 #include <JANA/JFactoryGenerator.h>
+#include <JANA/Calibrations/JCalibrationManager.h>
+#include <JANA/Calibrations/JCalibrationGeneratorCCDB.h>
+
 #include "ftcal_trigger_service.hpp"
 #include "InputDataFormat.hpp"
 #include "OutputDataFormat.hpp"
+#include "ft_cal_trigger_event_factory.hpp"
 #include "ersap_event_processor.hpp"
 
 #include "FT/FTCalCluster_factory.h"
 #include "FT/FTCalCluster_factory_km.h"
 #include "FT/FTCalCluster_factory_hdbscan.h"
 #include "FT/FTCalHit_factory.h"
+#include "TT/TranslationTable_factory.h"
 
 
 ersap::EngineData FTCalTriggerService::configure(ersap::EngineData& input)
@@ -36,6 +41,8 @@ ersap::EngineData FTCalTriggerService::configure(ersap::EngineData& input)
     // }
 
     m_app = new JApplication(); // (params)
+    m_app->SetParameterValue("RUNTYPE", "HALLB");  // TODO: This should be done more generically
+
     m_evtsrc = new ErsapEventSource<TridasEvent, FTCalTriggerEvent>("CLAS12-FTCal-Trigger-EventSource", m_app, "", "calibrated");
 
     m_app->Add(m_evtsrc);
@@ -43,7 +50,13 @@ ersap::EngineData FTCalTriggerService::configure(ersap::EngineData& input)
     m_app->Add(new JFactoryGeneratorT<FTCalCluster_factory_hdbscan>);
     m_app->Add(new JFactoryGeneratorT<FTCalCluster_factory_km>);
     m_app->Add(new JFactoryGeneratorT<FTCalHit_factory>);
+    m_app->Add(new JFactoryGeneratorT<FTCalTriggerEvent_factory>);
+    m_app->Add(new JFactoryGeneratorT<TranslationTable_factory>);
     m_app->Add(new ErsapEventProcessor<FTCalTriggerEvent>());
+
+    auto calib_manager = std::make_shared<JCalibrationManager>();
+    calib_manager->AddCalibrationGenerator(new JCalibrationGeneratorCCDB);
+    m_app->ProvideService(calib_manager);
 
     m_app->Run(false);  // Exit immediately, DON'T block until finished
     return {};

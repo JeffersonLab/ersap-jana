@@ -4,6 +4,14 @@ include_directories(${JANA_INCLUDE_DIRS})  # Need this for Cling as well
 find_package(ROOT REQUIRED)
 include(${ROOT_USE_FILE})
 
+# TODO: Put these in a FindCCDB.cmake file, possibly
+set(CCDB_INCLUDE_DIRS $ENV{CCDB_HOME}/include)
+set(CCDB_LIBRARY $ENV{CCDB_HOME}/lib/libccdb.a)
+add_definitions(-DHAVE_CCDB)
+# These are needed for CCDB
+set(SQLITE_LIBRARY -L$ENV{SQLITE_HOME}/lib -lsqlite3)
+find_package(MySQL REQUIRED)
+
 # Generate ROOT dictionaries for each of our ROOT object types
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 ROOT_GENERATE_DICTIONARY(G__JObjectDrawable system/JObjectDrawable.h)
@@ -14,6 +22,8 @@ set(FT_TRIGGER_SERVICE_SOURCES
         ersap_event_group.hpp
         ftcal_trigger_service.cpp
         ftcal_trigger_service.hpp
+        ft_cal_trigger_event_factory.cpp
+        ft_cal_trigger_event_factory.hpp
         InputDataFormat.cpp
         OutputDataFormat.cpp
         FT/FTCalHit.cc
@@ -45,10 +55,10 @@ set(FT_TRIGGER_SERVICE_SOURCES
         )
 
 add_library(ftcal_trigger_service SHARED ${FT_TRIGGER_SERVICE_SOURCES})
-target_include_directories(ftcal_trigger_service PUBLIC ${ROOT_INCLUDE_DIRS}
+target_include_directories(ftcal_trigger_service PUBLIC ${ROOT_INCLUDE_DIRS} ${CCDB_INCLUDE_DIRS}
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
         )
-target_link_libraries(ftcal_trigger_service Ersap::ersap ${JANA_LIBRARIES} ${ROOT_LIBRARIES})
+target_link_libraries(ftcal_trigger_service Ersap::ersap ${JANA_LIBRARIES} ${ROOT_LIBRARIES} ${SQLITE_LIBRARY} ${MYSQL_LIBRARY} ${CCDB_LIBRARY})
 if (CMAKE_CXX_COMPILER_ID MATCHES Clang)
     target_compile_options(ftcal_trigger_service PRIVATE -Wno-return-type-c-linkage)
 endif()
