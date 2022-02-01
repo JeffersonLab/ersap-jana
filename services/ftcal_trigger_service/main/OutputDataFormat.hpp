@@ -11,9 +11,6 @@
 
 #include <ersap/engine_data_type.hpp>
 
-// TODO: I have no idea what this should be, probably EVIO, but I don't know how to do that yet,
-// so instead I'm going to defer the decision on how to serialize until later
-
 struct FTCalTriggerEvent {
     std::vector<TriggerDecision*> triggerDecisions;
     std::vector<FTCalHit*> ftcal_hits;

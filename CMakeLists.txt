@@ -60,6 +60,7 @@ add_subdirectory(data/src/main/cpp)
 add_subdirectory(data/src/test/cpp)
 add_subdirectory(services/sampa/main/cpp)
 add_subdirectory(services/sampa/test/cpp)
-add_subdirectory(services/clas12_ft_trigger/main)
+add_subdirectory(services/ftcal_trigger_service/main)
+add_subdirectory(services/ftcal_trigger_service/test)
 
 

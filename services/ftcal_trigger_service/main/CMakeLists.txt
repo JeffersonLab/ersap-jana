@@ -12,8 +12,8 @@ set(FT_TRIGGER_SERVICE_SOURCES
         ersap_event_source.hpp
         ersap_event_processor.hpp
         ersap_event_group.hpp
-        ft_trigger_service.cpp
-        ft_trigger_service.hpp
+        ftcal_trigger_service.cpp
+        ftcal_trigger_service.hpp
         InputDataFormat.cpp
         OutputDataFormat.cpp
         FT/FTCalHit.cc
@@ -44,12 +44,12 @@ set(FT_TRIGGER_SERVICE_SOURCES
         G__JObjectDrawable
         )
 
-add_library(clas12_ft_trigger_service SHARED ${FT_TRIGGER_SERVICE_SOURCES})
-target_include_directories(clas12_ft_trigger_service PUBLIC ${ROOT_INCLUDE_DIRS}
+add_library(ftcal_trigger_service SHARED ${FT_TRIGGER_SERVICE_SOURCES})
+target_include_directories(ftcal_trigger_service PUBLIC ${ROOT_INCLUDE_DIRS}
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
         )
-target_link_libraries(clas12_ft_trigger_service Ersap::ersap ${JANA_LIBRARIES} ${ROOT_LIBRARIES})
+target_link_libraries(ftcal_trigger_service Ersap::ersap ${JANA_LIBRARIES} ${ROOT_LIBRARIES})
 if (CMAKE_CXX_COMPILER_ID MATCHES Clang)
-    target_compile_options(clas12_ft_trigger_service PRIVATE -Wno-return-type-c-linkage)
+    target_compile_options(ftcal_trigger_service PRIVATE -Wno-return-type-c-linkage)
 endif()
-install(TARGETS clas12_ft_trigger_service DESTINATION ${CMAKE_INSTALL_PLUGINDIR}/jana/services)
+install(TARGETS ftcal_trigger_service DESTINATION ${CMAKE_INSTALL_PLUGINDIR}/jana/services)

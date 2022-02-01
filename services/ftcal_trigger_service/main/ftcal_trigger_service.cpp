@@ -5,7 +5,7 @@
 
 #include <ersap/stdlib/json_utils.hpp>
 #include <JANA/JFactoryGenerator.h>
-#include "ft_trigger_service.hpp"
+#include "ftcal_trigger_service.hpp"
 #include "InputDataFormat.hpp"
 #include "OutputDataFormat.hpp"
 #include "ersap_event_processor.hpp"
@@ -16,7 +16,7 @@
 #include "FT/FTCalHit_factory.h"
 
 
-ersap::EngineData FTTriggerService::configure(ersap::EngineData& input)
+ersap::EngineData FTCalTriggerService::configure(ersap::EngineData& input)
 {
     // Ersap provides a simple JSON parser to read configuration data
     // and configure the service.
@@ -50,7 +50,7 @@ ersap::EngineData FTTriggerService::configure(ersap::EngineData& input)
 }
 
 
-ersap::EngineData FTTriggerService::execute(ersap::EngineData& input) {
+ersap::EngineData FTCalTriggerService::execute(ersap::EngineData& input) {
     auto output = ersap::EngineData{};
 
     // If the mime-type is not supported, return an error.
@@ -81,53 +81,48 @@ ersap::EngineData FTTriggerService::execute(ersap::EngineData& input) {
 }
 
 
-ersap::EngineData FTTriggerService::execute_group(const std::vector<ersap::EngineData>& inputs)
+ersap::EngineData FTCalTriggerService::execute_group(const std::vector<ersap::EngineData>& inputs)
 {
-    // TODO: Talk to Vardan about
     return {};
 }
 
-std::vector<ersap::EngineDataType> FTTriggerService::input_data_types() const
+std::vector<ersap::EngineDataType> FTCalTriggerService::input_data_types() const
 {
-    // TODO: Need to understand
-    // return { ersap::type::JSON, ersap::type::BYTES };
-    return { ersap::type::JSON, TRIDAS_EVENT };
+    return { TRIDAS_EVENT };
 }
 
 
-std::vector<ersap::EngineDataType> FTTriggerService::output_data_types() const
+std::vector<ersap::EngineDataType> FTCalTriggerService::output_data_types() const
 {
-    // TODO: Need to understand
-    // return { ersap::type::JSON, ersap::type::BYTES };
-    return {  };
+    return { FTCAL_TRIGGER };
 }
 
 
-std::set<std::string> FTTriggerService::states() const
+std::set<std::string> FTCalTriggerService::states() const
 {
     return std::set<std::string>{};
 }
 
 
-std::string FTTriggerService::name() const
+std::string FTCalTriggerService::name() const
 {
-    return "FTTriggerService";
+    return "FTCalTriggerService";
 }
 
 
-std::string FTTriggerService::author() const
+std::string FTCalTriggerService::author() const
 {
     return "Nathan Brei";
 }
 
 
-std::string FTTriggerService::description() const
+std::string FTCalTriggerService::description() const
 {
     return "Jana based FTCal trigger service example";
 }
 
 
-std::string FTTriggerService::version() const
+std::string FTCalTriggerService::version() const
 {
     return "0.1";
 }

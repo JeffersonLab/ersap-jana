@@ -3,8 +3,8 @@
 // Subject to the terms in the LICENSE file found in the top-level directory.
 
 
-#ifndef ERSAP_JANA_FT_TRIGGER_SERVICE_HPP
-#define ERSAP_JANA_FT_TRIGGER_SERVICE_HPP
+#ifndef ERSAP_JANA_FTCAL_TRIGGER_SERVICE_HPP
+#define ERSAP_JANA_FTCAL_TRIGGER_SERVICE_HPP
 
 #include <ersap/engine.hpp>
 #include <JANA/JApplication.h>
@@ -14,18 +14,18 @@
 #include "ersap_event_source.hpp"
 
 
-class FTTriggerService : public ersap::Engine
+class FTCalTriggerService : public ersap::Engine
 {
 public:
-    FTTriggerService() = default;
+    FTCalTriggerService() = default;
 
-    FTTriggerService(const FTTriggerService&) = delete;
-    FTTriggerService& operator=(const FTTriggerService&) = delete;
+    FTCalTriggerService(const FTCalTriggerService&) = delete;
+    FTCalTriggerService& operator=(const FTCalTriggerService&) = delete;
 
-    FTTriggerService(FTTriggerService&&) = default;
-    FTTriggerService& operator=(FTTriggerService&&) = default;
+    FTCalTriggerService(FTCalTriggerService&&) = default;
+    FTCalTriggerService& operator=(FTCalTriggerService&&) = default;
 
-    ~FTTriggerService() override = default;
+    ~FTCalTriggerService() override = default;
 
 public:
     ersap::EngineData configure(ersap::EngineData&) override;
@@ -62,4 +62,4 @@ class clas12_ft_trigger_service {
 };
 
 
-#endif //ERSAP_JANA_FT_TRIGGER_SERVICE_HPP
+#endif //ERSAP_JANA_FTCAL_TRIGGER_SERVICE_HPP
