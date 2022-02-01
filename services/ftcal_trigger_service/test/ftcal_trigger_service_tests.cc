@@ -3,34 +3,30 @@
 // Subject to the terms in the LICENSE file found in the top-level directory.
 
 #include <gtest/gtest.h>
+#include <ersap/engine_data.hpp>
+#include <ersap/engine_data_type.hpp>
 #include "ersap_event_processor.hpp"
-#include "InputDataFormat.hpp"
+#include "ftcal_trigger_service.hpp"
 
 #include "ftcal_trigger_service_tests.hpp"
 
 
-TEST(FTCalTriggerServiceTests, EndToEnd) {
+TEST(FTCalTriggerServiceTests, EndToEndZeroHits) {
 
     TridasEvent input;
+    input.header.nHit = 0;
+    input.header.EventID = 22;
+    // No hits in this Event
 
-/*
-    std::vector<SampaDASMessage*> inputs;
-    inputs.push_back(new SampaDASMessage);
-    std::vector<SampaOutputMessage*> expected_outputs;
-    expected_outputs.push_back(new SampaOutputMessage);
+    ersap::EngineData ersap_input;
+    ersap_input.set_data(TRIDAS_EVENT, input);
+    FTCalTriggerService sut;
+    ersap::EngineData ersap_config;
+    ersap_config.set_data(ersap::type::JSON, "{}");
+    sut.configure(ersap_config);
+    auto ersap_output = sut.execute(ersap_input);
+    FTCalTriggerEvent output = ersap::data_cast<FTCalTriggerEvent>(ersap_output);
 
-    inputs[0]->payload = {{1,2,3}};
-    expected_outputs[0]->sum = 6;
-
-    auto app = new JApplication();
-    auto src = new ErsapEventSource<SampaDASMessage, SampaOutputMessage>("TestingEventSource", app);
-    app->Add(src);
-    app->Add(new ErsapEventProcessor<SampaOutputMessage>);
-    app->Add(new JFactoryGeneratorT<SampaTestFactory>);
-    app->Run(false);
-
-    auto actual_outputs = src->SubmitAndWait(inputs);
-    EXPECT_EQ(expected_outputs[0]->sum, actual_outputs[0]->sum);
-    */
+    EXPECT_EQ(output.ftcal_hits.size(), 0);
 
 }
