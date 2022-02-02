@@ -14,8 +14,6 @@
 TEST(FTCalTriggerServiceTests, EndToEndZeroHits) {
 
     TridasEvent input;
-    input.header.nHit = 0;
-    input.header.EventID = 22;
     // No hits in this Event
 
     ersap::EngineData ersap_input;

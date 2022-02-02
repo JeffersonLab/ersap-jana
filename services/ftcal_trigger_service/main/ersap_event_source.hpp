@@ -78,8 +78,8 @@ public:
         event->GetFactory<ErsapEventGroup<InputT, OutputT>>()->SetFactoryFlag(JFactory::JFactory_Flags_t::NOT_OBJECT_OWNER);
 
         // JANA always needs an event number and a run number, so extract these from the Tridas data somehow
-        event->SetEventNumber(next_event.first->get_event_number());
-        event->SetRunNumber(next_event.first->get_run_number());
+        event->SetEventNumber(next_event.first->event_number);
+        event->SetRunNumber(next_event.first->run_number);
     }
 
 

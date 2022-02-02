@@ -7,6 +7,7 @@
 #define ERSAP_JANA_INPUTDATAFORMAT_HPP
 
 #include <ersap/engine_data_type.hpp>
+#include "DAQ/TridasEvent.h"
 
 const unsigned int MAX_PLUGINS_NUMBER  = 8;
 const unsigned int MAX_TRIGGERS_NUMBER = 5;
@@ -48,28 +49,6 @@ struct DataFrameHeader {
 #pragma pack(pop)
 
 
-// This assumes somebody has already unpacked the buffer for us. We can't just
-// reinterpret_cast a zmq buffer to obtain these, because Event has a variable size.
-struct TridasEvent {
-    TEHeaderInfo header;
-    std::vector<DataFrameHeader> dataframes;
-
-    size_t get_event_number() {
-        return header.EventID;
-        // TODO: Are EventIDs unique, or repeat across different timeslices?
-        //       If they repeat, we need to include the timeslice ID as well in order to make the JANA evtnr unique
-    }
-
-    size_t get_run_number() {
-        return 0; // TODO: Figure out where we get a run number from.
-    }
-
-};
-
-struct TridasTimeslice {
-    TimeSliceHeader header;
-    std::vector<TridasEvent> events;
-};
 
 struct TridasEventSerializer : public ersap::Serializer {
     std::vector<std::uint8_t> write(const ersap::any& data) const;
@@ -78,39 +57,6 @@ struct TridasEventSerializer : public ersap::Serializer {
 
 const ersap::EngineDataType TRIDAS_EVENT {"binary/tridas-event",
                                       std::make_unique<TridasEventSerializer>()};
-
-// The code below isn't going to work because sizeof(Event) is not constant.
-// I will figure out how to unpack the buffers later once I understand what the existing code already does
-/*
-struct Event {
-    uint8_t* start_of_event;
-
-    TEHeaderInfo& get_header() {
-        return reinterpret_cast<TEHeaderInfo>(*start_of_event);
-    }
-
-    DataFrameHeader& get_dataframe(size_t frame_index) {
-        uint8_t* start_of_frame;
-        return reinterpret_cast<DataFrameHeader>(*start_of_frame);
-    }
-
-};
-
-
-struct Timeslice {
-    uint8_t* start_of_timeslice;
-
-    TimeSliceHeader& get_header() {
-        return reinterpret_cast<TimeSliceHeader>(*start_of_timeslice);
-    }
-    Event& get_event(size_t event_index) {
-        uint8_t* start_of_event = start_of_timeslice + sizeof(TimeSliceHeader) + event_index*sizeof(Event)
-        return reinterpret_cast<Event>(start_of_timeslice+sizeof(TimeSliceHeader));
-    }
-};
- */
-
-
 
 
 

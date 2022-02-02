@@ -18,6 +18,8 @@
 #include "FT/FTCalCluster_factory_km.h"
 #include "FT/FTCalCluster_factory_hdbscan.h"
 #include "FT/FTCalHit_factory.h"
+#include "DAQ/fa250VTPMode7Hit_factory.h"
+#include "DAQ/faWaveboardHit_factory.h"
 #include "TT/TranslationTable_factory.h"
 
 
@@ -41,7 +43,8 @@ ersap::EngineData FTCalTriggerService::configure(ersap::EngineData& input)
     // }
 
     m_app = new JApplication(); // (params)
-    m_app->SetParameterValue("RUNTYPE", "HALLB");  // TODO: This should be done more generically
+    m_app->SetParameterValue("jana:calib_url", "mysql://clas12reader@clasdb.jlab.org/clas12");
+    m_app->SetParameterValue("runtype", "HALLB");  // TODO: These should be done more generically
 
     m_evtsrc = new ErsapEventSource<TridasEvent, FTCalTriggerEvent>("CLAS12-FTCal-Trigger-EventSource", m_app, "", "calibrated");
 
@@ -52,6 +55,8 @@ ersap::EngineData FTCalTriggerService::configure(ersap::EngineData& input)
     m_app->Add(new JFactoryGeneratorT<FTCalHit_factory>);
     m_app->Add(new JFactoryGeneratorT<FTCalTriggerEvent_factory>);
     m_app->Add(new JFactoryGeneratorT<TranslationTable_factory>);
+    m_app->Add(new JFactoryGeneratorT<fa250VTPMode7Hit_factory>);
+    m_app->Add(new JFactoryGeneratorT<faWaveboardHit_factory>);
     m_app->Add(new ErsapEventProcessor<FTCalTriggerEvent>());
 
     auto calib_manager = std::make_shared<JCalibrationManager>();

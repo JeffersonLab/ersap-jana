@@ -9,6 +9,7 @@
 #include <ersap/engine.hpp>
 #include <JANA/JApplication.h>
 
+#include "DAQ/TridasEvent.h"
 #include "InputDataFormat.hpp"
 #include "OutputDataFormat.hpp"
 #include "ersap_event_source.hpp"
