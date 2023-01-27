@@ -39,7 +39,10 @@ that will be used by the ERSAP orchestrator.
 
 ## Dependencies
 
-and [ERSAP C++](https://github.com/JeffersonLab/ersap-cpp#build-notes)
+Add [ERSAP C++](https://github.com/JeffersonLab/ersap-cpp#build-notes)
+into `$ERSAP_HOME`.
+
+Add [ERSAP JAVA](https://github.com/JeffersonLab/ersap-java.git)
 into `$ERSAP_HOME`.
 
 ## Build and deploy

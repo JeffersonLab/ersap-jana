@@ -28,6 +28,7 @@ namespace ersap {
             // and configure the service.
             auto config = ersap::stdlib::parse_json(input);
 
+
             // TODO: Extract jana_config_file_name from ersap config
             auto jana_config_file_name = "config.jana";
 
